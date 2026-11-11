@@ -3,109 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Development-Day</title>
+    <title>Development-Day — Разработка ради обучения</title>
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
+<!-- ШАПКА -->
 <div class="topbar">
     <div class="topbar-brand">DEVELOPMENT-DAY</div>
     <div class="topbar-actions">
         <span class="topbar-user">typical community of students</span>
-        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">◐</button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">◐</button>
     </div>
 </div>
 
 <div class="layout">
+    <!-- САЙДБАР -->
     <aside class="sidebar" id="sidebar">
-        <div class="brand">
-            <h1>NAV</h1>
-        </div>
+        <div class="brand"><h1>NAV</h1></div>
         <nav>
             <ul>
                 <li><a href="#about" class="active">О нас</a></li>
                 <li><a href="#directions">Направления</a></li>
                 <li><a href="#projects">Проекты</a></li>
                 <li><a href="#stack">Стек</a></li>
-                <li><a href="#join">Как присоединиться</a></li>
+                <li><a href="#join">Присоединиться</a></li>
             </ul>
         </nav>
-        <div class="sidebar-footer">
-            <span class="text-muted">EOF</span>
-        </div>
+        <div class="sidebar-footer"><span class="text-muted">EOF</span></div>
     </aside>
 
+    <!-- КОНТЕНТ -->
     <main class="content">
-        <div class="page">
+        <div class="page page-profile">
 
-            <article id="about">
-                <header><h2>О НАС</h2></header>
-                <p>Мы — студенческое сообщество, которое создаёт проекты в самых разных областях: машинное обучение, мобильные и десктопные приложения, инфраструктурные панели. Практикуем разработку на всех языках программирования.</p>
-            </article>
+            <!-- HERO -->
+            <section class="hero" id="about">
+                <div class="hero-title">DEVELOPMENT-DAY</div>
+                <div class="hero-subtitle">Разработка ради обучения. Код ради пользы.</div>
+                <div class="hero-tags">
+                    <span class="hero-tag success">ML</span>
+                    <span class="hero-tag">Android</span>
+                    <span class="hero-tag">iOS</span>
+                    <span class="hero-tag">Desktop</span>
+                    <span class="hero-tag warning">DevOps</span>
+                    <span class="hero-tag">Python</span>
+                    <span class="hero-tag">Rust</span>
+                    <span class="hero-tag">Kotlin</span>
+                    <span class="hero-tag">Swift</span>
+                    <span class="hero-tag">C++</span>
+                    <span class="hero-tag">Go</span>
+                </div>
+            </section>
 
-            <div class="metrics-grid">
-                <div class="metric-card"><header>ML & AI</header><div class="metric-value">QISKIT</div><p>Квантовые интерпретаторы, PyTorch, TensorFlow</p></div>
-                <div class="metric-card"><header>INFRA</header><div class="metric-value">SERVERDECK</div><p>Панели управления, nginx, Samba, S3</p></div>
-                <div class="metric-card"><header>MOBILE</header><div class="metric-value">ANDROID</div><p>Kotlin, Swift, Flutter, React Native</p></div>
-            </div>
-
-            <article id="projects">
-                <header><h2>ПРОЕКТЫ</h2></header>
-                <div class="service-card">
-                    <header><h3>ServerDeck</h3><span class="badge badge-success">FLAGSHIP</span></header>
-                    <p>Панель управления Linux-сервером через веб-интерфейс.</p>
-                    <div class="service-paths">
-                        <code>CI passing</code> <code>Docker</code> <code>Python 3.12+</code> <code>MIT</code>
+            <!-- НАПРАВЛЕНИЯ -->
+            <section class="section" id="directions">
+                <h2 class="section-title"><span class="prompt">$</span> ls ./directions</h2>
+                <div class="directions-grid">
+                    <div class="direction-card">
+                        <header><h3>ML &amp; AI</h3></header>
+                        <p>Квантовые интерпретаторы, прикладные модели, эксперименты с Qiskit, PyTorch и TensorFlow.</p>
                     </div>
-                    <footer>
-                        <a class="btn btn-sm" href="https://github.com/Development-Day/ServerDeck">VIEW</a>
-                    </footer>
+                    <div class="direction-card">
+                        <header><h3>INFRASTRUCTURE</h3></header>
+                        <p>Панели управления серверами, веб-интерфейсы для администрирования, автоматизация развёртывания.</p>
+                    </div>
+                    <div class="direction-card">
+                        <header><h3>MOBILE</h3></header>
+                        <p>Android и iOS приложения для повседневных задач — Kotlin, Swift, Flutter, React Native.</p>
+                    </div>
+                    <div class="direction-card">
+                        <header><h3>DESKTOP</h3></header>
+                        <p>Инструменты для работы, учёбы и автоматизации — Electron, Qt, .NET, Rust.</p>
+                    </div>
+                    <div class="direction-card">
+                        <header><h3>WEB &amp; SYSADMIN</h3></header>
+                        <p>Веб-интерфейсы для управления инфраструктурой, Samba, nginx, PHP-FPM.</p>
+                    </div>
+                    <div class="direction-card">
+                        <header><h3>COMMUNITY</h3></header>
+                        <p>Code review, парное программирование, открытые обсуждения и обмен знаниями.</p>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <header><h3>samba-webmanager</h3><span class="badge">PYTHON</span></header>
-                    <p>Веб-интерфейс для управления Samba на Debian / Ubuntu.</p>
-                    <footer>
-                        <a class="btn btn-sm" href="https://github.com/Development-Day/samba-webmanager-v.0.1.0">VIEW</a>
-                    </footer>
-                </div>
-                <div class="service-card">
-                    <header><h3>quantum-interpreter</h3><span class="badge">QISKIT</span></header>
-                    <p>Гибридный классическо-квантовый интерпретатор. CLI / REPL / GUI.</p>
-                    <footer>
-                        <a class="btn btn-sm" href="https://github.com/Development-Day/quantum-interpreter-v.0.1.0">VIEW</a>
-                    </footer>
-                </div>
-            </article>
+            </section>
 
-            <article id="join">
-                <header><h2>КАК ПРИСОЕДИНИТЬСЯ</h2></header>
-                <table>
-                    <thead><tr><th>ШАГ</th><th>ДЕЙСТВИЕ</th></tr></thead>
-                    <tbody>
-                        <tr><td>1</td><td>Выбери проект или предложи идею в Issues</td></tr>
-                        <tr><td>2</td><td>Сделай fork и внеси изменения</td></tr>
-                        <tr><td>3</td><td>Отправь Pull Request</td></tr>
-                        <tr><td>4</td><td>Обсуждай в Discussions</td></tr>
-                    </tbody>
-                </table>
-            </article>
+            <!-- ПРОЕКТЫ -->
+            <section class="section" id="projects">
+                <h2 class="section-title"><span class="prompt">$</span> ls ./projects</h2>
+                <div class="project-list">
+
+                    <article class="project-card flagship">
+                        <div class="project-head">
+                            <h3>ServerDeck</h3>
+                            <div class="project-badges">
+                                <span class="badge badge-success">FLAGSHIP</span>
+                                <span class="badge">MIT</span>
+                            </div>
+                        </div>
+                        <p class="project-desc"><strong>Панель управления Linux-сервером через веб-интерфейс.</strong> Сайты, базы данных, резервное копирование, мониторинг, терминал и Git-развёртывание — в едином окне.</p>
+                        <div class="project-tags">
+                            <code>CI passing</code>
+                            <code>Security CI</code>
+                            <code>Docker</code>
+                            <code>Python 3.12+</code>
+                            <code>Ruff</code>
+                            <code>mypy</code>
+                        </div>
+                        <p class="project-desc">Развёртывание Laravel / Django / Next.js одной командой, выпуск SSL, настройка nginx / apache / PHP-FPM, резервное копирование в S3, браузерный терминал с журналированием, Git-развёртывание без простоя.</p>
+                        <div class="project-note">ServerDeck — флагманский проект сообщества. Кластеры Kubernetes и мультитенантный хостинг запланированы в следующих версиях.</div>
+                        <div class="project-footer">
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/ServerDeck">VIEW SOURCE</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-head">
+                            <h3>samba-webmanager-v.0.1.0</h3>
+                            <div class="project-badges"><span class="badge">PYTHON</span></div>
+                        </div>
+                        <p class="project-desc"><strong>Веб-интерфейс для управления Samba</strong> на Debian 11+ / Ubuntu 20.04+. Забудьте про редактирование <code>smb.conf</code> вручную.</p>
+                        <div class="project-tags">
+                            <code>Python</code><code>Flask</code><code>Linux</code>
+                        </div>
+                        <div class="project-footer">
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/samba-webmanager-v.0.1.0">VIEW SOURCE</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-head">
+                            <h3>quantum-interpreter-v.0.1.0</h3>
+                            <div class="project-badges"><span class="badge">QISKIT</span></div>
+                        </div>
+                        <p class="project-desc"><strong>QuantumInterpreter</strong> — гибридный классическо-квантовый интерпретатор на Python + Qiskit. Суперпозиция, запутанность, измерения, сфера Блоха, энтропия фон Неймана. CLI / REPL / GUI.</p>
+                        <div class="project-tags">
+                            <code>Python</code><code>Qiskit</code><code>NumPy</code>
+                        </div>
+                        <div class="project-footer">
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/quantum-interpreter-v.0.1.0">VIEW SOURCE</a>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- СТЕК -->
+            <section class="section" id="stack">
+                <h2 class="section-title"><span class="prompt">$</span> cat stack.txt</h2>
+                <div class="stack-grid">
+                    <div class="stack-block">
+                        <h4>Языки программирования</h4>
+                        <pre><span class="kw">Python</span>    <span class="kw">JavaScript</span>  <span class="kw">TypeScript</span>  <span class="kw">Rust</span>      <span class="kw">Go</span>
+<span class="kw">Kotlin</span>    <span class="kw">Swift</span>       <span class="kw">Java</span>        <span class="kw">C++</span>       <span class="kw">C</span>
+<span class="kw">C#</span>        <span class="kw">Ruby</span>        <span class="kw">PHP</span>         <span class="kw">Dart</span>      <span class="kw">R</span>
+<span class="kw">SQL</span>       <span class="kw">Bash</span></pre>
+                    </div>
+                    <div class="stack-block">
+                        <h4>ML / Data</h4>
+                        <pre><span class="str">PyTorch</span>   <span class="str">TensorFlow</span>  <span class="str">scikit-learn</span>
+<span class="str">Qiskit</span>    <span class="str">Pandas</span>      <span class="str">NumPy</span></pre>
+                    </div>
+                    <div class="stack-block">
+                        <h4>Мобильная / десктоп</h4>
+                        <pre><span class="kw">Android</span>   <span class="kw">iOS</span>   <span class="kw">Flutter</span>   <span class="kw">React Native</span>
+<span class="kw">Electron</span>  <span class="kw">Qt</span>    <span class="kw">.NET</span></pre>
+                    </div>
+                    <div class="stack-block">
+                        <h4>Инфраструктура / качество</h4>
+                        <pre><span class="dim">Git</span>  <span class="dim">GitHub Actions</span>  <span class="dim">Docker</span>  <span class="dim">Linux</span>
+<span class="dim">nginx</span>  <span class="dim">Apache</span>  <span class="dim">S3</span>
+<span class="dim">Ruff</span>  <span class="dim">mypy</span>  <span class="dim">MIT License</span></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JOIN -->
+            <section class="section" id="join">
+                <h2 class="section-title"><span class="prompt">$</span> ./join.sh --steps</h2>
+                <div class="join-grid">
+                    <div class="join-step">
+                        <span class="step-num">[1]</span>
+                        <h4>Выбери проект</h4>
+                        <p>Найди проект выше или предложи идею в <a href="https://github.com/Development-Day/Development-Day/issues">Issues</a>.</p>
+                    </div>
+                    <div class="join-step">
+                        <span class="step-num">[2]</span>
+                        <h4>Сделай fork</h4>
+                        <p>Создай ветку и внеси изменения — даже если это первая правка.</p>
+                    </div>
+                    <div class="join-step">
+                        <span class="step-num">[3]</span>
+                        <h4>Отправь PR</h4>
+                        <p>Pull request с описанием изменений. Ревью поможем пройти.</p>
+                    </div>
+                    <div class="join-step">
+                        <span class="step-num">[4]</span>
+                        <h4>Обсуждай</h4>
+                        <p>Присоединяйся к <a href="https://github.com/Development-Day/Development-Day/discussions">Discussions</a>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="site-footer">
+                <span class="footer-text">© Development-Day — typical community of students</span>
+                <div class="footer-links">
+                    <a class="btn btn-sm" href="https://github.com/Development-Day">GITHUB</a>
+                </div>
+            </footer>
 
         </div>
     </main>
 </div>
 
 <script>
-    // Theme toggle (соответствует data-theme из app.css)
+    // Тема
     const html = document.documentElement;
     const btn = document.getElementById('theme-toggle');
     btn.addEventListener('click', () => {
-        const current = html.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
+        const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
     });
     const saved = localStorage.getItem('theme');
     if (saved) html.setAttribute('data-theme', saved);
+
+    // Активная ссылка в сайдбаре при скролле
+    const links = document.querySelectorAll('.sidebar nav a');
+    const sections = [...document.querySelectorAll('section[id], .hero[id]')];
+    window.addEventListener('scroll', () => {
+        const pos = window.scrollY + 120;
+        let current = sections[0]?.id;
+        sections.forEach(s => { if (s.offsetTop <= pos) current = s.id; });
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+    }, { passive: true });
 </script>
 
 </body>
