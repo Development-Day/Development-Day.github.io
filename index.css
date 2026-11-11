@@ -1,8 +1,31 @@
 /* ============================================================
-   index.css — оформление лендинга Development-Day
-   Финальная версия: пропорции, ритм, адаптив, иконки.
-   Подключается ПОСЛЕ app.css (мини-версии).
+   index.css — ВСЁ оформление лендинга Development-Day.
+   Самодостаточный файл: не зависит от правил app.css,
+   кроме переменных темы.
    ============================================================ */
+
+/* ============================================================
+   КОНТЕЙНЕР СТРАНИЦЫ + ФОН-СЕТКА
+   ============================================================ */
+.page {
+    min-height: calc(100vh - 56px);
+    background-color: var(--bg-page);
+    background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg var(--grid-color) 1px, transparent 1px);
+    background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    background-attachment: local;
+    padding: 28px 32px;
+}
+.page-profile {
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0 48px;
+}
 
 /* ---------- Skip-link ---------- */
 .skip-link {
@@ -36,9 +59,18 @@
    TOPBAR
    ============================================================ */
 .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
     padding: 0 24px;
     height: 56px;
-    min-height: 56px;
+    background-color: var(--bg-topbar);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-glow);
 }
 
 .topbar-left {
@@ -84,6 +116,7 @@
     background: var(--success);
     box-shadow: 0 0 6px var(--success);
     animation: pulse 2s infinite;
+    flex-shrink: 0;
 }
 @keyframes pulse {
     0%, 100% { opacity: 1; }
@@ -96,13 +129,33 @@
     letter-spacing: 1px;
 }
 
+/* ---------- Переключатель темы ---------- */
 .theme-toggle {
     width: 36px;
     height: 36px;
-    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px solid var(--border);
+    color: var(--fg-primary);
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
 }
+.theme-toggle:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-bright);
+    color: var(--accent-bright);
+    box-shadow: var(--shadow-glow);
+}
+.theme-icon-light { display: none !important; }
+.theme-icon-dark  { display: inline-block !important; }
+[data-theme="light"] .theme-icon-dark  { display: none !important; }
+[data-theme="light"] .theme-icon-light { display: inline-block !important; }
 
-/* Мобильный гамбургер */
+/* ---------- Мобильный гамбургер ---------- */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -129,7 +182,7 @@
 .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ============================================================
-   LAYOUT
+   LAYOUT + САЙДБАР
    ============================================================ */
 .layout {
     display: flex;
@@ -138,12 +191,18 @@
 
 .sidebar {
     width: 240px;
+    flex-shrink: 0;
+    background-color: var(--bg-sidebar);
+    border-right: 2px solid var(--border);
     padding: 22px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar .brand {
     padding: 0 22px 14px;
     margin-bottom: 14px;
+    border-bottom: 1px solid var(--border-dim);
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -152,28 +211,57 @@
     font-size: 13px;
     letter-spacing: 4px;
     margin: 0;
+    text-shadow: var(--shadow-text-glow);
 }
 .sidebar .brand small {
     font-size: 9px;
     letter-spacing: 1px;
+    color: var(--fg-dim);
 }
 
+.sidebar nav ul {
+    list-style: none;
+}
 .sidebar nav a {
-    font-size: 11px;
+    display: block;
     padding: 11px 22px;
+    font-size: 11px;
     letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+.sidebar nav a:hover {
+    background: var(--bg-hover);
+    color: var(--fg-primary);
+    border-left-color: var(--accent);
+    text-shadow: var(--shadow-text-glow);
+}
+.sidebar nav a.active {
+    background: var(--bg-active);
+    color: var(--fg-bright);
+    border-left-color: var(--accent-bright);
+    text-shadow: var(--shadow-text-glow);
 }
 
 .sidebar-footer {
+    margin-top: auto;
     padding: 16px 22px;
+    border-top: 1px solid var(--border-dim);
     font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
-
+.sidebar-footer .text-muted {
+    font-size: 10px;
+    color: var(--fg-dim);
+}
 .sidebar-repo-link {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    margin-top: 8px;
+    gap: 6px;
     font-size: 10px;
     color: var(--fg-dim);
     word-break: break-all;
@@ -198,28 +286,33 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-}
-
-/* ---------- Страница ---------- */
-.page {
-    padding: 28px 32px;
-}
-.page-profile {
-    max-width: 1120px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 0 48px;
 }
 
 /* ============================================================
    HERO
    ============================================================ */
 .hero {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
     padding: 36px 28px 32px;
     margin-bottom: 36px;
     text-align: center;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
 }
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+.hero > * { position: relative; z-index: 1; }
 
 .hero-badge {
     display: inline-flex;
@@ -241,6 +334,7 @@
     background: var(--success);
     box-shadow: 0 0 6px var(--success);
     animation: pulse 2s infinite;
+    flex-shrink: 0;
 }
 
 .hero-title {
@@ -248,6 +342,8 @@
     letter-spacing: 5px;
     margin-bottom: 10px;
     line-height: 1.1;
+    color: var(--fg-bright);
+    text-shadow: var(--shadow-text-glow-strong);
 }
 
 .hero-subtitle {
@@ -262,11 +358,6 @@
     min-height: 1.6em;
     max-width: 100%;
 }
-.hero-subtitle .prompt {
-    color: var(--accent);
-    font-weight: bold;
-    flex-shrink: 0;
-}
 .hero-subtitle .caret {
     color: var(--accent);
     animation: blink 1s steps(2, start) infinite;
@@ -274,7 +365,7 @@
 }
 @keyframes blink { to { visibility: hidden; } }
 
-/* Метрики — единая полоса с разделителями */
+/* Метрики */
 .hero-metrics {
     display: flex;
     justify-content: center;
@@ -302,10 +393,15 @@
     font-size: 26px;
     line-height: 1;
     letter-spacing: 0.5px;
+    color: var(--accent-bright);
+    font-weight: bold;
+    text-shadow: var(--shadow-text-glow-strong);
 }
 .hero-metric-label {
     font-size: 9px;
     letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--fg-dim);
 }
 
 /* Теги */
@@ -318,9 +414,31 @@
     max-width: 600px;
 }
 .hero-tag {
+    display: inline-block;
     padding: 4px 10px;
     font-size: 9px;
     letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: var(--bg-info);
+    color: var(--fg-primary);
+    text-shadow: var(--shadow-text-glow);
+    transition: all 0.2s;
+}
+.hero-tag:hover {
+    border-color: var(--accent-bright);
+    color: var(--accent-bright);
+    box-shadow: var(--shadow-glow-soft);
+}
+.hero-tag.success {
+    border-color: var(--success);
+    color: var(--success);
+    background: var(--bg-success);
+}
+.hero-tag.warning {
+    border-color: var(--warning);
+    color: var(--warning);
+    background: var(--bg-warning);
 }
 
 /* CTA */
@@ -329,6 +447,85 @@
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+/* ============================================================
+   КНОПКИ (только для страницы)
+   ============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px 16px;
+    background: var(--bg-info);
+    color: var(--fg-primary);
+    border: 2px solid var(--border);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1.4;
+    transition: all 0.2s;
+    text-shadow: var(--shadow-text-glow);
+    flex-shrink: 0;
+}
+.btn:hover {
+    background: var(--bg-active);
+    border-color: var(--accent-bright);
+    color: var(--accent-bright);
+    box-shadow: var(--shadow-glow);
+}
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 10px;
+    gap: 6px;
+}
+.btn-success {
+    background: var(--bg-success);
+    border-color: var(--success);
+    color: var(--success);
+}
+.btn-success:hover {
+    border-color: var(--success-bright);
+    color: var(--success-bright);
+    box-shadow: var(--shadow-glow);
+}
+.btn-secondary {
+    background: var(--bg-page);
+    border-color: var(--fg-dim);
+    color: var(--fg-dim);
+    text-shadow: none;
+}
+.btn-secondary:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent);
+    color: var(--accent);
+    text-shadow: var(--shadow-text-glow);
+}
+
+/* ============================================================
+   БЕЙДЖИ (только для страницы)
+   ============================================================ */
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: var(--bg-info);
+    color: var(--fg-primary);
+    text-shadow: var(--shadow-text-glow);
+}
+.badge-success {
+    border-color: var(--success);
+    color: var(--success);
+    background: var(--bg-success);
 }
 
 /* ============================================================
@@ -344,15 +541,18 @@
     gap: 8px;
     font-size: 13px;
     letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--fg-bright);
+    text-shadow: var(--shadow-text-glow);
     padding-bottom: 8px;
     margin-bottom: 18px;
+    border-bottom: 2px solid var(--border);
 }
 .section-title .prompt {
     font-size: 13px;
     color: var(--accent);
 }
 
-/* Reveal */
 .reveal {
     opacity: 0;
     transform: translateY(16px);
@@ -371,15 +571,22 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 }
-@media (max-width: 960px) { .directions-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .directions-grid { grid-template-columns: 1fr; } }
 
 .direction-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     padding: 18px 18px 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 0;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    min-width: 0;
+}
+.direction-card:hover {
+    border-color: var(--accent-bright);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
 }
 .direction-card header {
     display: flex;
@@ -394,11 +601,14 @@
     font-size: 11px;
     letter-spacing: 2px;
     margin: 0;
+    color: var(--fg-bright);
+    text-shadow: var(--shadow-text-glow);
 }
 .direction-card p {
     font-size: 12px;
     line-height: 1.55;
     margin: 0;
+    color: var(--fg-primary);
 }
 
 /* ============================================================
@@ -411,8 +621,22 @@
 }
 
 .project-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
     padding: 20px 22px;
-    margin-bottom: 0;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-width: 0;
+}
+.project-card:hover {
+    border-color: var(--accent-bright);
+    box-shadow: var(--shadow-glow-soft);
+}
+.project-card.flagship {
+    border-color: var(--success);
+}
+.project-card.flagship:hover {
+    box-shadow: var(--shadow-glow);
 }
 
 .project-head {
@@ -427,20 +651,24 @@
     font-size: 14px;
     letter-spacing: 1.5px;
     margin: 0;
+    color: var(--fg-bright);
+    text-shadow: var(--shadow-text-glow);
 }
 .project-badges {
     display: flex;
     gap: 6px;
-    flex-shrink: 0;
     flex-wrap: wrap;
+    flex-shrink: 0;
 }
 
 .project-desc {
     font-size: 12px;
     line-height: 1.6;
     margin-bottom: 10px;
+    color: var(--fg-primary);
 }
 .project-desc:last-of-type { margin-bottom: 0; }
+.project-desc strong { color: var(--fg-bright); }
 
 .project-tags {
     display: flex;
@@ -452,6 +680,9 @@
     padding: 3px 8px;
     font-size: 10px;
     letter-spacing: 0.4px;
+    background: var(--bg-code);
+    border: 1px solid var(--border-dim);
+    color: var(--fg-bright);
 }
 
 .project-note {
@@ -459,6 +690,9 @@
     padding: 10px 14px;
     font-size: 11px;
     line-height: 1.55;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-info);
+    color: var(--fg-primary);
 }
 
 .project-footer {
@@ -479,15 +713,19 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
 }
-@media (max-width: 768px) { .stack-grid { grid-template-columns: 1fr; } }
 
 .stack-block {
+    background: var(--bg-code);
+    border: 1px solid var(--border-dim);
     padding: 16px 18px;
 }
 .stack-block h4 {
     font-size: 10px;
     letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--fg-dim);
     margin-bottom: 12px;
+    text-shadow: none;
 }
 
 .stack-icons {
@@ -518,13 +756,9 @@
 .stack-icons img {
     width: 13px !important;
     height: 13px !important;
-    max-width: 13px !important;
-    max-height: 13px !important;
     display: block;
     flex-shrink: 0;
 }
-
-/* Светлая тема: приглушаем иконки */
 [data-theme="light"] .stack-icons img {
     filter: grayscale(0.6) contrast(0.9);
     opacity: 0.85;
@@ -542,29 +776,36 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
-@media (max-width: 960px) { .join-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .join-grid { grid-template-columns: 1fr; } }
 
 .join-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     padding: 18px 16px;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    min-width: 0;
 }
-.join-step .step-num {
-    font-size: 16px;
-    line-height: 1;
-    margin-bottom: 2px;
+.join-step:hover {
+    border-color: var(--accent-bright);
+    box-shadow: var(--shadow-glow-soft);
+    transform: translateY(-2px);
 }
 .join-step h4 {
     font-size: 10px;
     letter-spacing: 1.5px;
+    text-transform: uppercase;
     margin: 0;
+    color: var(--fg-bright);
+    text-shadow: var(--shadow-text-glow);
 }
 .join-step p {
     font-size: 11px;
     line-height: 1.55;
     margin: 0;
+    color: var(--fg-primary);
 }
 .join-step a {
     color: var(--accent);
@@ -579,6 +820,7 @@
 .site-footer {
     margin-top: 46px;
     padding: 22px 0 0;
+    border-top: 2px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -594,8 +836,8 @@
 .footer-text {
     font-size: 10px;
     letter-spacing: 1.5px;
-    color: var(--fg-dim);
     text-transform: uppercase;
+    color: var(--fg-dim);
 }
 .footer-text.dim { color: var(--fg-dark); }
 .footer-links {
@@ -608,18 +850,41 @@
    КНОПКА «НАВЕРХ»
    ============================================================ */
 .back-to-top {
-    width: 42px;
-    height: 42px;
-    font-size: 18px;
+    position: fixed;
     bottom: 24px;
     right: 24px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    color: var(--fg-primary);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-glow-soft);
+    z-index: 900;
+    padding: 0;
+}
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.back-to-top:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-bright);
+    color: var(--accent-bright);
+    box-shadow: var(--shadow-glow);
 }
 
 /* ============================================================
-   ★ ИКОНКИ (inline SVG) — жёсткие размеры ★
+   ИКОНКИ — жёсткие размеры
    ============================================================ */
-
-/* База: любая SVG с классом .ico */
 svg.ico {
     width: 14px !important;
     height: 14px !important;
@@ -628,119 +893,71 @@ svg.ico {
     flex: 0 0 auto !important;
     display: inline-block !important;
     vertical-align: middle;
-    overflow: visible;
 }
 
-/* В кнопках — 13px */
-.btn svg.ico,
-.btn-sm svg.ico,
-a.btn svg.ico {
-    width: 13px !important;
-    height: 13px !important;
-    max-width: 13px !important;
-    max-height: 13px !important;
-}
-
-/* Заголовки секций */
+.btn svg.ico { width: 13px !important; height: 13px !important; }
 .section-title svg.ico {
     width: 15px !important;
     height: 15px !important;
-    max-width: 15px !important;
-    max-height: 15px !important;
     color: var(--accent);
 }
-
-/* Карточки направлений */
 .direction-card header svg.ico {
     width: 14px !important;
     height: 14px !important;
-    max-width: 14px !important;
-    max-height: 14px !important;
     color: var(--accent);
     opacity: 0.85;
 }
-
-/* Шаги join */
 .join-step svg.ico,
 .join-step svg.step-ico {
     width: 18px !important;
     height: 18px !important;
-    max-width: 18px !important;
-    max-height: 18px !important;
     color: var(--accent);
-    margin-bottom: 4px;
     display: block !important;
+    margin-bottom: 4px;
 }
-
-/* Hero: подзаголовок, badge, CTA */
 .hero-subtitle svg.ico {
     width: 13px !important;
     height: 13px !important;
-    max-width: 13px !important;
-    max-height: 13px !important;
     color: var(--accent);
 }
 .hero-badge svg.ico {
     width: 11px !important;
     height: 11px !important;
-    max-width: 11px !important;
-    max-height: 11px !important;
     color: var(--accent);
 }
-.hero-cta .btn svg.ico {
-    width: 13px !important;
-    height: 13px !important;
-    max-width: 13px !important;
-    max-height: 13px !important;
-}
-
-/* Topbar status */
 .topbar-status svg.ico {
     width: 11px !important;
     height: 11px !important;
-    max-width: 11px !important;
-    max-height: 11px !important;
     opacity: 0.8;
 }
-
-/* Переключатель темы */
 .theme-toggle svg.ico {
     width: 15px !important;
     height: 15px !important;
-    max-width: 15px !important;
-    max-height: 15px !important;
 }
-
-/* Сайдбар: GitHub-иконка */
 .sidebar-repo-link svg.ico {
     width: 11px !important;
     height: 11px !important;
-    max-width: 11px !important;
-    max-height: 11px !important;
 }
-
-/* Кнопка «наверх» */
 .back-to-top svg.ico {
     width: 16px !important;
     height: 16px !important;
-    max-width: 16px !important;
-    max-height: 16px !important;
 }
 
-/* Показ нужной иконки темы */
-.theme-icon-light { display: none !important; }
-.theme-icon-dark  { display: inline-block !important; }
-[data-theme="light"] .theme-icon-dark  { display: none !important; }
-[data-theme="light"] .theme-icon-light { display: inline-block !important; }
+/* ============================================================
+   АДАПТИВ ≤960px (планшет)
+   ============================================================ */
+@media (max-width: 960px) {
+    .directions-grid { grid-template-columns: repeat(2, 1fr); }
+    .join-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* ============================================================
-   МОБИЛЬНАЯ АДАПТАЦИЯ (≤768px)
+   АДАПТИВ ≤768px (мобилка)
    ============================================================ */
 @media (max-width: 768px) {
     .topbar {
         padding: 0 16px;
         height: 52px;
-        min-height: 52px;
     }
     .topbar-brand { font-size: 12px; letter-spacing: 3px; }
     .topbar-user, .topbar-status { display: none; }
@@ -748,6 +965,7 @@ a.btn svg.ico {
 
     .layout { display: block; min-height: calc(100vh - 52px); }
 
+    /* Сайдбар — выезжающий */
     .sidebar {
         position: fixed;
         top: 0; left: 0; bottom: 0;
@@ -768,64 +986,31 @@ a.btn svg.ico {
         min-height: calc(100vh - 52px);
         background-attachment: scroll;
     }
-    .page-profile {
-        max-width: 100%;
-        padding: 0 0 32px;
-    }
+    .page-profile { max-width: 100%; padding: 0 0 32px; }
 
-    /* Hero — компактный */
+    /* Hero */
     .hero {
         padding: 24px 16px 22px;
         margin-bottom: 26px;
     }
-    .hero-badge {
-        font-size: 9px;
-        padding: 3px 10px;
-        margin-bottom: 14px;
-    }
-    .hero-title {
-        font-size: 1.25rem;
-        letter-spacing: 3px;
-        margin-bottom: 8px;
-    }
-    .hero-subtitle {
-        font-size: 11px;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-    }
+    .hero-title { font-size: 1.25rem; letter-spacing: 3px; margin-bottom: 8px; }
+    .hero-subtitle { font-size: 11px; letter-spacing: 1px; margin-bottom: 20px; }
     .hero-metrics {
         margin-bottom: 20px;
         padding: 14px 0;
         max-width: 100%;
     }
-    .hero-metric {
-        padding: 0 8px;
-        min-width: 80px;
-    }
+    .hero-metric { padding: 0 8px; min-width: 80px; }
     .hero-metric-num { font-size: 20px; }
     .hero-metric-label { font-size: 8px; letter-spacing: 1px; }
-
-    .hero-tags {
-        margin-bottom: 20px;
-        gap: 5px;
-    }
-    .hero-tag {
-        padding: 3px 8px;
-        font-size: 9px;
-    }
+    .hero-tags { margin-bottom: 20px; gap: 5px; }
+    .hero-tag { padding: 3px 8px; font-size: 9px; }
     .hero-cta { gap: 8px; }
-    .hero-cta .btn {
-        flex: 1 1 auto;
-        min-width: 140px;
-    }
+    .hero-cta .btn { flex: 1 1 auto; min-width: 140px; }
 
     /* Секции */
     .section { margin-bottom: 28px; }
-    .section-title {
-        font-size: 12px;
-        letter-spacing: 1.5px;
-        margin-bottom: 14px;
-    }
+    .section-title { font-size: 12px; letter-spacing: 1.5px; margin-bottom: 14px; }
 
     /* Карточки */
     .direction-card { padding: 16px; }
@@ -836,12 +1021,23 @@ a.btn svg.ico {
     .project-desc { font-size: 12px; }
     .project-note { font-size: 11px; padding: 9px 12px; }
 
+    .stack-grid { grid-template-columns: 1fr; }
     .stack-block { padding: 14px 16px; }
     .stack-icons li { font-size: 10px; padding: 4px 8px; }
 
+    .join-grid { grid-template-columns: 1fr; }
     .join-step { padding: 16px 14px; }
     .join-step h4 { font-size: 10px; }
     .join-step p { font-size: 11px; }
+
+    /* Кнопки — 44px, но иконки остаются мелкими */
+    .btn {
+        min-height: 44px;
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+    .btn-sm { min-height: 44px; padding: 10px 12px; font-size: 11px; }
+    .btn svg.ico { width: 14px !important; height: 14px !important; }
 
     /* Footer */
     .site-footer {
@@ -856,48 +1052,26 @@ a.btn svg.ico {
     .back-to-top {
         width: 40px;
         height: 40px;
-        font-size: 16px;
         bottom: 16px;
         right: 16px;
     }
 
     .direction-card:hover,
     .join-step:hover { transform: none; }
-
-    /* Мобилка: SVG в кнопках не должны растягиваться */
-    .btn svg.ico,
-    .btn-sm svg.ico,
-    a.btn svg.ico {
-        width: 14px !important;
-        height: 14px !important;
-        max-width: 14px !important;
-        max-height: 14px !important;
-    }
-
-    .join-step svg.ico,
-    .join-step svg.step-ico {
-        width: 18px !important;
-        height: 18px !important;
-        max-width: 18px !important;
-        max-height: 18px !important;
-    }
 }
 
 /* ============================================================
-   ОЧЕНЬ МАЛЫЕ ЭКРАНЫ (≤480px)
+   АДАПТИВ ≤480px
    ============================================================ */
 @media (max-width: 480px) {
     .topbar-brand { display: none; }
-
     .hero-title { font-size: 1.15rem; letter-spacing: 2px; }
     .hero-subtitle { font-size: 10px; }
     .hero-metric { min-width: 70px; padding: 0 6px; }
     .hero-metric-num { font-size: 18px; }
     .hero-metric-label { font-size: 8px; }
-
     .project-head { flex-direction: column; gap: 8px; align-items: flex-start; }
     .project-badges { align-self: flex-start; }
-
     .join-grid { grid-template-columns: 1fr; }
 }
 
