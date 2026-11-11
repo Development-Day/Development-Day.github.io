@@ -1,13 +1,14 @@
 /* ============================================================
    index.css — оформление лендинга Development-Day
-   Финальная версия: пропорции, ритм, адаптив.
+   Финальная версия: пропорции, ритм, адаптив, иконки.
    Подключается ПОСЛЕ app.css (мини-версии).
    ============================================================ */
 
 /* ---------- Skip-link ---------- */
 .skip-link {
     position: fixed;
-    top: -100px; left: 12px;
+    top: -100px;
+    left: 12px;
     z-index: 9999;
     background: var(--bg-card);
     color: var(--fg-bright);
@@ -23,7 +24,8 @@
 .reading-progress {
     position: fixed;
     top: 0; left: 0;
-    height: 3px; width: 0%;
+    height: 3px;
+    width: 0%;
     background: linear-gradient(90deg, var(--accent), var(--success));
     box-shadow: 0 0 10px var(--accent);
     z-index: 200;
@@ -53,6 +55,7 @@
     color: var(--fg-bright);
     text-shadow: var(--shadow-text-glow-strong);
     white-space: nowrap;
+    text-decoration: none;
 }
 .topbar-brand:hover { color: var(--accent-bright); }
 
@@ -75,7 +78,8 @@
     background: var(--bg-info);
 }
 .status-dot {
-    width: 7px; height: 7px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--success);
     box-shadow: 0 0 6px var(--success);
@@ -104,7 +108,8 @@
     flex-direction: column;
     justify-content: center;
     gap: 4px;
-    width: 40px; height: 40px;
+    width: 40px;
+    height: 40px;
     background: transparent;
     border: 2px solid var(--border);
     cursor: pointer;
@@ -113,7 +118,8 @@
 }
 .menu-toggle span {
     display: block;
-    width: 18px; height: 2px;
+    width: 18px;
+    height: 2px;
     background: var(--fg-primary);
     margin: 0 auto;
     transition: transform 0.2s, opacity 0.2s;
@@ -162,8 +168,11 @@
     padding: 16px 22px;
     font-size: 10px;
 }
+
 .sidebar-repo-link {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     margin-top: 8px;
     font-size: 10px;
     color: var(--fg-dim);
@@ -176,7 +185,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(2px);
     z-index: 999;
     opacity: 0;
@@ -212,7 +221,6 @@
     text-align: center;
 }
 
-/* Метка сообщества вместо ASCII */
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -227,7 +235,8 @@
     margin-bottom: 18px;
 }
 .hero-badge .dot {
-    width: 6px; height: 6px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--success);
     box-shadow: 0 0 6px var(--success);
@@ -330,11 +339,13 @@
 }
 
 .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 13px;
     letter-spacing: 2px;
     padding-bottom: 8px;
     margin-bottom: 18px;
-    gap: 8px;
 }
 .section-title .prompt {
     font-size: 13px;
@@ -371,6 +382,9 @@
     margin-bottom: 0;
 }
 .direction-card header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin: 0;
     padding: 0;
     background: none;
@@ -502,13 +516,15 @@
     box-shadow: var(--shadow-glow-soft);
 }
 .stack-icons img {
-    width: 13px;
-    height: 13px;
+    width: 13px !important;
+    height: 13px !important;
+    max-width: 13px !important;
+    max-height: 13px !important;
     display: block;
     flex-shrink: 0;
 }
 
-/* Светлая тема: приглушаем иконки, чтобы не «резали глаз» */
+/* Светлая тема: приглушаем иконки */
 [data-theme="light"] .stack-icons img {
     filter: grayscale(0.6) contrast(0.9);
     opacity: 0.85;
@@ -600,6 +616,124 @@
 }
 
 /* ============================================================
+   ★ ИКОНКИ (inline SVG) — жёсткие размеры ★
+   ============================================================ */
+
+/* База: любая SVG с классом .ico */
+svg.ico {
+    width: 14px !important;
+    height: 14px !important;
+    max-width: 14px !important;
+    max-height: 14px !important;
+    flex: 0 0 auto !important;
+    display: inline-block !important;
+    vertical-align: middle;
+    overflow: visible;
+}
+
+/* В кнопках — 13px */
+.btn svg.ico,
+.btn-sm svg.ico,
+a.btn svg.ico {
+    width: 13px !important;
+    height: 13px !important;
+    max-width: 13px !important;
+    max-height: 13px !important;
+}
+
+/* Заголовки секций */
+.section-title svg.ico {
+    width: 15px !important;
+    height: 15px !important;
+    max-width: 15px !important;
+    max-height: 15px !important;
+    color: var(--accent);
+}
+
+/* Карточки направлений */
+.direction-card header svg.ico {
+    width: 14px !important;
+    height: 14px !important;
+    max-width: 14px !important;
+    max-height: 14px !important;
+    color: var(--accent);
+    opacity: 0.85;
+}
+
+/* Шаги join */
+.join-step svg.ico,
+.join-step svg.step-ico {
+    width: 18px !important;
+    height: 18px !important;
+    max-width: 18px !important;
+    max-height: 18px !important;
+    color: var(--accent);
+    margin-bottom: 4px;
+    display: block !important;
+}
+
+/* Hero: подзаголовок, badge, CTA */
+.hero-subtitle svg.ico {
+    width: 13px !important;
+    height: 13px !important;
+    max-width: 13px !important;
+    max-height: 13px !important;
+    color: var(--accent);
+}
+.hero-badge svg.ico {
+    width: 11px !important;
+    height: 11px !important;
+    max-width: 11px !important;
+    max-height: 11px !important;
+    color: var(--accent);
+}
+.hero-cta .btn svg.ico {
+    width: 13px !important;
+    height: 13px !important;
+    max-width: 13px !important;
+    max-height: 13px !important;
+}
+
+/* Topbar status */
+.topbar-status svg.ico {
+    width: 11px !important;
+    height: 11px !important;
+    max-width: 11px !important;
+    max-height: 11px !important;
+    opacity: 0.8;
+}
+
+/* Переключатель темы */
+.theme-toggle svg.ico {
+    width: 15px !important;
+    height: 15px !important;
+    max-width: 15px !important;
+    max-height: 15px !important;
+}
+
+/* Сайдбар: GitHub-иконка */
+.sidebar-repo-link svg.ico {
+    width: 11px !important;
+    height: 11px !important;
+    max-width: 11px !important;
+    max-height: 11px !important;
+}
+
+/* Кнопка «наверх» */
+.back-to-top svg.ico {
+    width: 16px !important;
+    height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+}
+
+/* Показ нужной иконки темы */
+.theme-icon-light { display: none !important; }
+.theme-icon-dark  { display: inline-block !important; }
+[data-theme="light"] .theme-icon-dark  { display: none !important; }
+[data-theme="light"] .theme-icon-light { display: inline-block !important; }
+
+/* ============================================================
    МОБИЛЬНАЯ АДАПТАЦИЯ (≤768px)
    ============================================================ */
 @media (max-width: 768px) {
@@ -625,7 +759,7 @@
     }
     .sidebar.open {
         transform: translateX(0);
-        box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
     }
     body.menu-open { overflow: hidden; }
 
@@ -729,6 +863,24 @@
 
     .direction-card:hover,
     .join-step:hover { transform: none; }
+
+    /* Мобилка: SVG в кнопках не должны растягиваться */
+    .btn svg.ico,
+    .btn-sm svg.ico,
+    a.btn svg.ico {
+        width: 14px !important;
+        height: 14px !important;
+        max-width: 14px !important;
+        max-height: 14px !important;
+    }
+
+    .join-step svg.ico,
+    .join-step svg.step-ico {
+        width: 18px !important;
+        height: 18px !important;
+        max-width: 18px !important;
+        max-height: 18px !important;
+    }
 }
 
 /* ============================================================
@@ -761,103 +913,4 @@
     }
     .reveal { opacity: 1; transform: none; }
     .hero-subtitle .caret { animation: none; }
-}
-
-/* ============================================================
-   ИКОНКИ (inline SVG)
-   ============================================================ */
-.ico {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    vertical-align: middle;
-    display: inline-block;
-}
-
-/* Иконки в кнопках и ссылках — чуть крупнее */
-.btn .ico,
-.topbar-status .ico {
-    width: 14px;
-    height: 14px;
-}
-
-/* Иконки в заголовках секций */
-.section-title .ico {
-    width: 16px;
-    height: 16px;
-    color: var(--accent);
-    filter: drop-shadow(0 0 3px var(--accent));
-}
-
-/* Иконки в карточках направлений */
-.direction-card header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.direction-card header .ico {
-    width: 16px;
-    height: 16px;
-    color: var(--accent);
-    opacity: 0.85;
-}
-
-/* Иконки шагов join — крупные, акцентные */
-.join-step .step-ico {
-    width: 22px;
-    height: 22px;
-    color: var(--accent);
-    filter: drop-shadow(0 0 4px var(--accent));
-    margin-bottom: 6px;
-}
-
-/* Hero: иконка перед подзаголовком */
-.hero-subtitle .ico {
-    width: 14px;
-    height: 14px;
-    color: var(--accent);
-    flex-shrink: 0;
-}
-
-/* Hero-badge: иконка слева */
-.hero-badge .ico {
-    width: 12px;
-    height: 12px;
-    color: var(--accent);
-}
-
-/* Hero CTA: иконки в кнопках */
-.hero-cta .btn .ico {
-    width: 14px;
-    height: 14px;
-}
-
-/* Переключатель темы: показываем нужную иконку */
-.theme-icon-light { display: none; }
-.theme-icon-dark  { display: inline-block; }
-[data-theme="light"] .theme-icon-dark  { display: none; }
-[data-theme="light"] .theme-icon-light { display: inline-block; }
-
-/* Сайдбар: иконка GitHub в футере */
-.sidebar-repo-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-.sidebar-repo-link .ico {
-    width: 12px;
-    height: 12px;
-}
-
-/* Кнопка «наверх»: SVG вместо текста */
-.back-to-top .ico {
-    width: 18px;
-    height: 18px;
-}
-
-/* Topbar status: иконка «wifi» рядом с точкой */
-.topbar-status .ico {
-    width: 12px;
-    height: 12px;
-    opacity: 0.85;
 }
