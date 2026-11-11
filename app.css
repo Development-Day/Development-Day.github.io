@@ -3,6 +3,7 @@
    Только то, что используется на странице профиля.
 
    Темы: <html data-theme="dark|light">
+   Подключать ДО index.css.
    ============================================================ */
 
 /* ============================================================
@@ -59,7 +60,7 @@
 
     /* Grid */
     --grid-color:       rgba(0, 255, 255, 0.06);
-    --grid-size:        40px;
+    --grid-size:        48px;
 
     /* Scrollbar */
     --scrollbar-track:  #000a0a;
@@ -117,7 +118,7 @@
     --shadow-text-glow-strong: 0 0 10px rgba(63, 82, 84, 0.42);
 
     --grid-color:       rgba(35, 42, 44, 0.22);
-    --grid-size:        40px;
+    --grid-size:        48px;
 
     --scrollbar-track:  #e1e4e6;
     --scrollbar-thumb:  #9aa2a4;
@@ -152,7 +153,7 @@ body {
     min-height: 100vh;
 }
 
-/* Плавная смена темы (класс навешивается из JS при желании) */
+/* Плавная смена темы */
 html.theme-transition,
 html.theme-transition *,
 html.theme-transition *::before,
@@ -553,7 +554,7 @@ article > footer,
 
 
 /* ============================================================
-   УТИЛИТЫ (только используемые в index.html)
+   УТИЛИТЫ
    ============================================================ */
 .text-center { text-align: center; }
 .text-right  { text-align: right; }
@@ -704,7 +705,7 @@ article > footer,
 
 
 /* ============================================================
-   ГАРАНТИРОВАННЫЙ ФОН СЕТКИ
+   ГАРАНТИРОВАННЫЙ ФОН СЕТКИ (48px)
    ============================================================ */
 html .page,
 html[data-theme="dark"] .page,
@@ -712,7 +713,7 @@ html[data-theme="dark"] .page,
     background-image:
         linear-gradient(rgba(0, 255, 255, 0.06) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 255, 255, 0.06) 1px, transparent 1px) !important;
-    background-size: 40px 40px !important;
+    background-size: 48px 48px !important;
     background-attachment: local !important;
 }
 
@@ -720,7 +721,7 @@ html[data-theme="light"] .page {
     background-image:
         linear-gradient(rgba(31, 45, 46, 0.22) 1px, transparent 1px),
         linear-gradient(90deg, rgba(31, 45, 46, 0.22) 1px, transparent 1px) !important;
-    background-size: 40px 40px !important;
+    background-size: 48px 48px !important;
     background-color: #e3e8ea !important;
     background-attachment: local !important;
 }
