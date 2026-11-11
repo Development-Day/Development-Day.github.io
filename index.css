@@ -762,3 +762,102 @@
     .reveal { opacity: 1; transform: none; }
     .hero-subtitle .caret { animation: none; }
 }
+
+/* ============================================================
+   ИКОНКИ (inline SVG)
+   ============================================================ */
+.ico {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/* Иконки в кнопках и ссылках — чуть крупнее */
+.btn .ico,
+.topbar-status .ico {
+    width: 14px;
+    height: 14px;
+}
+
+/* Иконки в заголовках секций */
+.section-title .ico {
+    width: 16px;
+    height: 16px;
+    color: var(--accent);
+    filter: drop-shadow(0 0 3px var(--accent));
+}
+
+/* Иконки в карточках направлений */
+.direction-card header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.direction-card header .ico {
+    width: 16px;
+    height: 16px;
+    color: var(--accent);
+    opacity: 0.85;
+}
+
+/* Иконки шагов join — крупные, акцентные */
+.join-step .step-ico {
+    width: 22px;
+    height: 22px;
+    color: var(--accent);
+    filter: drop-shadow(0 0 4px var(--accent));
+    margin-bottom: 6px;
+}
+
+/* Hero: иконка перед подзаголовком */
+.hero-subtitle .ico {
+    width: 14px;
+    height: 14px;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* Hero-badge: иконка слева */
+.hero-badge .ico {
+    width: 12px;
+    height: 12px;
+    color: var(--accent);
+}
+
+/* Hero CTA: иконки в кнопках */
+.hero-cta .btn .ico {
+    width: 14px;
+    height: 14px;
+}
+
+/* Переключатель темы: показываем нужную иконку */
+.theme-icon-light { display: none; }
+.theme-icon-dark  { display: inline-block; }
+[data-theme="light"] .theme-icon-dark  { display: none; }
+[data-theme="light"] .theme-icon-light { display: inline-block; }
+
+/* Сайдбар: иконка GitHub в футере */
+.sidebar-repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.sidebar-repo-link .ico {
+    width: 12px;
+    height: 12px;
+}
+
+/* Кнопка «наверх»: SVG вместо текста */
+.back-to-top .ico {
+    width: 18px;
+    height: 18px;
+}
+
+/* Topbar status: иконка «wifi» рядом с точкой */
+.topbar-status .ico {
+    width: 12px;
+    height: 12px;
+    opacity: 0.85;
+}
