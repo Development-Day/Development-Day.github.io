@@ -3,26 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Development-Day — студенческое сообщество: ML, инфраструктура, мобильные и десктопные приложения. Открытый код — открытые знания.">
     <title>Development-Day — Разработка ради обучения</title>
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Перейти к содержимому</a>
+
+<!-- ПРОГРЕСС ЧТЕНИЯ -->
+<div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
 <!-- ШАПКА -->
-<div class="topbar">
-    <div class="topbar-brand">DEVELOPMENT-DAY</div>
-    <div class="topbar-actions">
-        <span class="topbar-user">typical community of students</span>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">◐</button>
+<header class="topbar">
+    <div class="topbar-left">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-brand">DEVELOPMENT-DAY</div>
     </div>
-</div>
+    <div class="topbar-actions">
+        <span class="topbar-status">
+            <span class="status-dot"></span> online
+        </span>
+        <span class="topbar-user">typical community of students</span>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">◐</button>
+    </div>
+</header>
 
 <div class="layout">
     <!-- САЙДБАР -->
     <aside class="sidebar" id="sidebar">
-        <div class="brand"><h1>NAV</h1></div>
-        <nav>
+        <div class="brand">
+            <h1>NAV</h1>
+            <small class="text-muted">v0.1</small>
+        </div>
+        <nav aria-label="Основная навигация">
             <ul>
                 <li><a href="#about" class="active">О нас</a></li>
                 <li><a href="#directions">Направления</a></li>
@@ -31,17 +48,50 @@
                 <li><a href="#join">Присоединиться</a></li>
             </ul>
         </nav>
-        <div class="sidebar-footer"><span class="text-muted">EOF</span></div>
+        <div class="sidebar-footer">
+            <span class="text-muted">EOF</span>
+            <a class="sidebar-repo-link" href="https://github.com/Development-Day" target="_blank" rel="noopener">
+                github.com/Development-Day ↗
+            </a>
+        </div>
     </aside>
 
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
     <!-- КОНТЕНТ -->
-    <main class="content">
+    <main class="content" id="main-content">
         <div class="page page-profile">
 
             <!-- HERO -->
             <section class="hero" id="about">
-                <div class="hero-title">DEVELOPMENT-DAY</div>
-                <div class="hero-subtitle">Разработка ради обучения. Код ради пользы.</div>
+                <pre class="hero-ascii" aria-hidden="true">
+ ____                            _             _     ____              
+|  _ \  _____   _____ _ __ ___  | |_ ___      | |   |  _ \  __ _ _   _ 
+| | | |/ _ \ \ / / _ \ '_ ` _ \ | __/ _ \_____| |   | | | |/ _` | | | |
+| |_| |  __/\ V /  __/ | | | | || ||  __/_____| |___| |_| | (_| | |_| |
+|____/ \___| \_/ \___|_| |_| |_| \__\___|     |_____|____/ \__,_|\__, |
+                                                                 |___/ </pre>
+
+                <h1 class="hero-title">DEVELOPMENT-DAY</h1>
+                <p class="hero-subtitle">
+                    <span id="typing-target"></span><span class="caret" aria-hidden="true">▌</span>
+                </p>
+
+                <div class="hero-metrics">
+                    <div class="hero-metric">
+                        <span class="hero-metric-num" data-count="3">0</span>
+                        <span class="hero-metric-label">проекта</span>
+                    </div>
+                    <div class="hero-metric">
+                        <span class="hero-metric-num" data-count="17">0</span>
+                        <span class="hero-metric-label">языков</span>
+                    </div>
+                    <div class="hero-metric">
+                        <span class="hero-metric-num" data-count="6">0</span>
+                        <span class="hero-metric-label">направлений</span>
+                    </div>
+                </div>
+
                 <div class="hero-tags">
                     <span class="hero-tag success">ML</span>
                     <span class="hero-tag">Android</span>
@@ -55,10 +105,15 @@
                     <span class="hero-tag">C++</span>
                     <span class="hero-tag">Go</span>
                 </div>
+
+                <div class="hero-cta">
+                    <a class="btn btn-success" href="#projects">СМОТРЕТЬ ПРОЕКТЫ</a>
+                    <a class="btn btn-secondary" href="https://github.com/Development-Day/Development-Day/discussions" target="_blank" rel="noopener">DISCUSSIONS ↗</a>
+                </div>
             </section>
 
             <!-- НАПРАВЛЕНИЯ -->
-            <section class="section" id="directions">
+            <section class="section reveal" id="directions">
                 <h2 class="section-title"><span class="prompt">$</span> ls ./directions</h2>
                 <div class="directions-grid">
                     <div class="direction-card">
@@ -89,7 +144,7 @@
             </section>
 
             <!-- ПРОЕКТЫ -->
-            <section class="section" id="projects">
+            <section class="section reveal" id="projects">
                 <h2 class="section-title"><span class="prompt">$</span> ls ./projects</h2>
                 <div class="project-list">
 
@@ -103,17 +158,13 @@
                         </div>
                         <p class="project-desc"><strong>Панель управления Linux-сервером через веб-интерфейс.</strong> Сайты, базы данных, резервное копирование, мониторинг, терминал и Git-развёртывание — в едином окне.</p>
                         <div class="project-tags">
-                            <code>CI passing</code>
-                            <code>Security CI</code>
-                            <code>Docker</code>
-                            <code>Python 3.12+</code>
-                            <code>Ruff</code>
-                            <code>mypy</code>
+                            <code>CI passing</code><code>Security CI</code><code>Docker</code>
+                            <code>Python 3.12+</code><code>Ruff</code><code>mypy</code>
                         </div>
                         <p class="project-desc">Развёртывание Laravel / Django / Next.js одной командой, выпуск SSL, настройка nginx / apache / PHP-FPM, резервное копирование в S3, браузерный терминал с журналированием, Git-развёртывание без простоя.</p>
                         <div class="project-note">ServerDeck — флагманский проект сообщества. Кластеры Kubernetes и мультитенантный хостинг запланированы в следующих версиях.</div>
                         <div class="project-footer">
-                            <a class="btn btn-sm" href="https://github.com/Development-Day/ServerDeck">VIEW SOURCE</a>
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/ServerDeck" target="_blank" rel="noopener">VIEW SOURCE ↗</a>
                         </div>
                     </article>
 
@@ -127,7 +178,7 @@
                             <code>Python</code><code>Flask</code><code>Linux</code>
                         </div>
                         <div class="project-footer">
-                            <a class="btn btn-sm" href="https://github.com/Development-Day/samba-webmanager-v.0.1.0">VIEW SOURCE</a>
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/samba-webmanager-v.0.1.0" target="_blank" rel="noopener">VIEW SOURCE ↗</a>
                         </div>
                     </article>
 
@@ -141,7 +192,7 @@
                             <code>Python</code><code>Qiskit</code><code>NumPy</code>
                         </div>
                         <div class="project-footer">
-                            <a class="btn btn-sm" href="https://github.com/Development-Day/quantum-interpreter-v.0.1.0">VIEW SOURCE</a>
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/quantum-interpreter-v.0.1.0" target="_blank" rel="noopener">VIEW SOURCE ↗</a>
                         </div>
                     </article>
 
@@ -149,43 +200,77 @@
             </section>
 
             <!-- СТЕК -->
-            <section class="section" id="stack">
+            <section class="section reveal" id="stack">
                 <h2 class="section-title"><span class="prompt">$</span> cat stack.txt</h2>
                 <div class="stack-grid">
                     <div class="stack-block">
                         <h4>Языки программирования</h4>
-                        <pre><span class="kw">Python</span>    <span class="kw">JavaScript</span>  <span class="kw">TypeScript</span>  <span class="kw">Rust</span>      <span class="kw">Go</span>
-<span class="kw">Kotlin</span>    <span class="kw">Swift</span>       <span class="kw">Java</span>        <span class="kw">C++</span>       <span class="kw">C</span>
-<span class="kw">C#</span>        <span class="kw">Ruby</span>        <span class="kw">PHP</span>         <span class="kw">Dart</span>      <span class="kw">R</span>
-<span class="kw">SQL</span>       <span class="kw">Bash</span></pre>
+                        <ul class="stack-icons">
+                            <li><img src="https://cdn.simpleicons.org/python/3776AB" alt="" loading="lazy"><span>Python</span></li>
+                            <li><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="" loading="lazy"><span>JavaScript</span></li>
+                            <li><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="" loading="lazy"><span>TypeScript</span></li>
+                            <li><img src="https://cdn.simpleicons.org/rust/ffffff" alt="" loading="lazy"><span>Rust</span></li>
+                            <li><img src="https://cdn.simpleicons.org/go/00ADD8" alt="" loading="lazy"><span>Go</span></li>
+                            <li><img src="https://cdn.simpleicons.org/kotlin/7F52FF" alt="" loading="lazy"><span>Kotlin</span></li>
+                            <li><img src="https://cdn.simpleicons.org/swift/FA7343" alt="" loading="lazy"><span>Swift</span></li>
+                            <li><img src="https://cdn.simpleicons.org/openjdk/ED8B00" alt="" loading="lazy"><span>Java</span></li>
+                            <li><img src="https://cdn.simpleicons.org/cplusplus/00599C" alt="" loading="lazy"><span>C++</span></li>
+                            <li><img src="https://cdn.simpleicons.org/c/A8B9CC" alt="" loading="lazy"><span>C</span></li>
+                            <li><img src="https://cdn.simpleicons.org/dotnet/512BD4" alt="" loading="lazy"><span>C#</span></li>
+                            <li><img src="https://cdn.simpleicons.org/ruby/CC342D" alt="" loading="lazy"><span>Ruby</span></li>
+                            <li><img src="https://cdn.simpleicons.org/php/777BB4" alt="" loading="lazy"><span>PHP</span></li>
+                            <li><img src="https://cdn.simpleicons.org/dart/0175C2" alt="" loading="lazy"><span>Dart</span></li>
+                            <li><img src="https://cdn.simpleicons.org/r/276DC3" alt="" loading="lazy"><span>R</span></li>
+                            <li><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="" loading="lazy"><span>SQL</span></li>
+                            <li><img src="https://cdn.simpleicons.org/gnubash/4EAA25" alt="" loading="lazy"><span>Bash</span></li>
+                        </ul>
                     </div>
                     <div class="stack-block">
                         <h4>ML / Data</h4>
-                        <pre><span class="str">PyTorch</span>   <span class="str">TensorFlow</span>  <span class="str">scikit-learn</span>
-<span class="str">Qiskit</span>    <span class="str">Pandas</span>      <span class="str">NumPy</span></pre>
+                        <ul class="stack-icons">
+                            <li><img src="https://cdn.simpleicons.org/pytorch/EE4C2C" alt="" loading="lazy"><span>PyTorch</span></li>
+                            <li><img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="" loading="lazy"><span>TensorFlow</span></li>
+                            <li><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="" loading="lazy"><span>scikit-learn</span></li>
+                            <li><img src="https://cdn.simpleicons.org/qiskit/6929C4" alt="" loading="lazy"><span>Qiskit</span></li>
+                            <li><img src="https://cdn.simpleicons.org/pandas/150458" alt="" loading="lazy"><span>Pandas</span></li>
+                            <li><img src="https://cdn.simpleicons.org/numpy/013243" alt="" loading="lazy"><span>NumPy</span></li>
+                        </ul>
                     </div>
                     <div class="stack-block">
                         <h4>Мобильная / десктоп</h4>
-                        <pre><span class="kw">Android</span>   <span class="kw">iOS</span>   <span class="kw">Flutter</span>   <span class="kw">React Native</span>
-<span class="kw">Electron</span>  <span class="kw">Qt</span>    <span class="kw">.NET</span></pre>
+                        <ul class="stack-icons">
+                            <li><img src="https://cdn.simpleicons.org/android/3DDC84" alt="" loading="lazy"><span>Android</span></li>
+                            <li><img src="https://cdn.simpleicons.org/apple/ffffff" alt="" loading="lazy"><span>iOS</span></li>
+                            <li><img src="https://cdn.simpleicons.org/flutter/02569B" alt="" loading="lazy"><span>Flutter</span></li>
+                            <li><img src="https://cdn.simpleicons.org/react/61DAFB" alt="" loading="lazy"><span>React Native</span></li>
+                            <li><img src="https://cdn.simpleicons.org/electron/47848F" alt="" loading="lazy"><span>Electron</span></li>
+                            <li><img src="https://cdn.simpleicons.org/qt/41CD52" alt="" loading="lazy"><span>Qt</span></li>
+                            <li><img src="https://cdn.simpleicons.org/dotnet/512BD4" alt="" loading="lazy"><span>.NET</span></li>
+                        </ul>
                     </div>
                     <div class="stack-block">
                         <h4>Инфраструктура / качество</h4>
-                        <pre><span class="dim">Git</span>  <span class="dim">GitHub Actions</span>  <span class="dim">Docker</span>  <span class="dim">Linux</span>
-<span class="dim">nginx</span>  <span class="dim">Apache</span>  <span class="dim">S3</span>
-<span class="dim">Ruff</span>  <span class="dim">mypy</span>  <span class="dim">MIT License</span></pre>
+                        <ul class="stack-icons">
+                            <li><img src="https://cdn.simpleicons.org/git/F05032" alt="" loading="lazy"><span>Git</span></li>
+                            <li><img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="" loading="lazy"><span>GitHub Actions</span></li>
+                            <li><img src="https://cdn.simpleicons.org/docker/2496ED" alt="" loading="lazy"><span>Docker</span></li>
+                            <li><img src="https://cdn.simpleicons.org/linux/FCC624" alt="" loading="lazy"><span>Linux</span></li>
+                            <li><img src="https://cdn.simpleicons.org/nginx/009639" alt="" loading="lazy"><span>nginx</span></li>
+                            <li><img src="https://cdn.simpleicons.org/apache/D22128" alt="" loading="lazy"><span>Apache</span></li>
+                            <li><img src="https://cdn.simpleicons.org/amazons3/569A31" alt="" loading="lazy"><span>S3</span></li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
             <!-- JOIN -->
-            <section class="section" id="join">
+            <section class="section reveal" id="join">
                 <h2 class="section-title"><span class="prompt">$</span> ./join.sh --steps</h2>
                 <div class="join-grid">
                     <div class="join-step">
                         <span class="step-num">[1]</span>
                         <h4>Выбери проект</h4>
-                        <p>Найди проект выше или предложи идею в <a href="https://github.com/Development-Day/Development-Day/issues">Issues</a>.</p>
+                        <p>Найди проект выше или предложи идею в <a href="https://github.com/Development-Day/Development-Day/issues" target="_blank" rel="noopener">Issues</a>.</p>
                     </div>
                     <div class="join-step">
                         <span class="step-num">[2]</span>
@@ -200,16 +285,21 @@
                     <div class="join-step">
                         <span class="step-num">[4]</span>
                         <h4>Обсуждай</h4>
-                        <p>Присоединяйся к <a href="https://github.com/Development-Day/Development-Day/discussions">Discussions</a>.</p>
+                        <p>Присоединяйся к <a href="https://github.com/Development-Day/Development-Day/discussions" target="_blank" rel="noopener">Discussions</a>.</p>
                     </div>
                 </div>
             </section>
 
             <!-- FOOTER -->
             <footer class="site-footer">
-                <span class="footer-text">© Development-Day — typical community of students</span>
+                <div class="footer-col">
+                    <span class="footer-text">© Development-Day — typical community of students</span>
+                    <span class="footer-text dim">Открытый код — открытые знания.</span>
+                </div>
                 <div class="footer-links">
-                    <a class="btn btn-sm" href="https://github.com/Development-Day">GITHUB</a>
+                    <a class="btn btn-sm btn-secondary" href="https://github.com/Development-Day/Development-Day/issues" target="_blank" rel="noopener">ISSUES ↗</a>
+                    <a class="btn btn-sm btn-secondary" href="https://github.com/Development-Day/Development-Day/discussions" target="_blank" rel="noopener">DISCUSSIONS ↗</a>
+                    <a class="btn btn-sm" href="https://github.com/Development-Day" target="_blank" rel="noopener">GITHUB ↗</a>
                 </div>
             </footer>
 
@@ -217,27 +307,153 @@
     </main>
 </div>
 
+<!-- КНОПКА НАВЕРХ -->
+<button class="back-to-top" id="back-to-top" aria-label="Наверх" title="Наверх">↑</button>
+
 <script>
-    // Тема
+(function () {
     const html = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    btn.addEventListener('click', () => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- Тема ---------- */
+    const themeBtn = document.getElementById('theme-toggle');
+    themeBtn.addEventListener('click', () => {
         const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
     });
-    const saved = localStorage.getItem('theme');
-    if (saved) html.setAttribute('data-theme', saved);
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) html.setAttribute('data-theme', savedTheme);
 
-    // Активная ссылка в сайдбаре при скролле
+    /* ---------- Мобильное меню ---------- */
+    const menuBtn = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    function closeMenu() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+    }
+    function openMenu() {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('menu-open');
+    }
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    overlay.addEventListener('click', closeMenu);
+    sidebar.querySelectorAll('nav a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    /* ---------- Typing-эффект ---------- */
+    const typingTarget = document.getElementById('typing-target');
+    const phrases = [
+        'Разработка ради обучения. Код ради пользы.',
+        'ML • Android • iOS • Desktop • DevOps',
+        'Python • Rust • Kotlin • Swift • C++ • Go',
+        'Открытый код — открытые знания.'
+    ];
+    if (typingTarget && !reduceMotion) {
+        let phraseIdx = 0, charIdx = 0, deleting = false;
+        function tick() {
+            const current = phrases[phraseIdx];
+            if (!deleting) {
+                charIdx++;
+                typingTarget.textContent = current.slice(0, charIdx);
+                if (charIdx === current.length) {
+                    deleting = true;
+                    setTimeout(tick, 1800);
+                    return;
+                }
+            } else {
+                charIdx--;
+                typingTarget.textContent = current.slice(0, charIdx);
+                if (charIdx === 0) {
+                    deleting = false;
+                    phraseIdx = (phraseIdx + 1) % phrases.length;
+                }
+            }
+            setTimeout(tick, deleting ? 30 : 55);
+        }
+        tick();
+    } else if (typingTarget) {
+        typingTarget.textContent = phrases[0];
+    }
+
+    /* ---------- Счётчики ---------- */
+    const counters = document.querySelectorAll('.hero-metric-num');
+    if (counters.length && !reduceMotion) {
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                const el = e.target;
+                const target = +el.dataset.count;
+                let n = 0;
+                const step = Math.max(1, Math.ceil(target / 30));
+                const t = setInterval(() => {
+                    n += step;
+                    if (n >= target) { n = target; clearInterval(t); }
+                    el.textContent = n;
+                }, 40);
+                io.unobserve(el);
+            });
+        }, { threshold: 0.6 });
+        counters.forEach(c => io.observe(c));
+    } else {
+        counters.forEach(c => c.textContent = c.dataset.count);
+    }
+
+    /* ---------- Reveal-анимации ---------- */
+    if (!reduceMotion) {
+        const revealIO = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealIO.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+    } else {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+
+    /* ---------- Активная ссылка в сайдбаре ---------- */
     const links = document.querySelectorAll('.sidebar nav a');
     const sections = [...document.querySelectorAll('section[id], .hero[id]')];
-    window.addEventListener('scroll', () => {
+    function updateActive() {
         const pos = window.scrollY + 120;
         let current = sections[0]?.id;
         sections.forEach(s => { if (s.offsetTop <= pos) current = s.id; });
         links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+
+    /* ---------- Прогресс чтения ---------- */
+    const progress = document.getElementById('reading-progress');
+    function updateProgress() {
+        const h = document.documentElement;
+        const total = h.scrollHeight - h.clientHeight;
+        const p = total > 0 ? (h.scrollTop / total) * 100 : 0;
+        progress.style.width = p + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    /* ---------- Кнопка «наверх» ---------- */
+    const toTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        toTop.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
+    toTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+})();
 </script>
 
 </body>
