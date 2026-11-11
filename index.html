@@ -370,7 +370,217 @@
 </button>
 
 <script>
-/* JS без изменений — вставьте прежний блок из прошлого ответа */
+(function () {
+    'use strict';
+
+    const html = document.documentElement;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ============================================================
+       ТЕМА
+       ============================================================ */
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+        });
+    }
+    try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || savedTheme === 'light') {
+            html.setAttribute('data-theme', savedTheme);
+        }
+    } catch (e) {}
+
+    /* ============================================================
+       МОБИЛЬНОЕ МЕНЮ
+       ============================================================ */
+    const menuBtn = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    function closeMenu() {
+        if (!sidebar || !overlay || !menuBtn) return;
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+    }
+    function openMenu() {
+        if (!sidebar || !overlay || !menuBtn) return;
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('menu-open');
+    }
+
+    if (menuBtn && sidebar && overlay) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.contains('open') ? closeMenu() : openMenu();
+        });
+        overlay.addEventListener('click', closeMenu);
+        sidebar.querySelectorAll('nav a').forEach(a => a.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeMenu();
+        });
+    }
+
+    /* ============================================================
+       TYPING-ЭФФЕКТ
+       ============================================================ */
+    const typingTarget = document.getElementById('typing-target');
+    const phrases = [
+        'Разработка ради обучения. Код ради пользы.',
+        'ML • Android • iOS • Desktop • DevOps',
+        'Python • Rust • Kotlin • Swift • C++ • Go',
+        'Открытый код — открытые знания.'
+    ];
+
+    if (typingTarget) {
+        if (reduceMotion) {
+            typingTarget.textContent = phrases[0];
+        } else {
+            let phraseIdx = 0;
+            let charIdx = 0;
+            let deleting = false;
+
+            function tick() {
+                const current = phrases[phraseIdx];
+
+                if (!deleting) {
+                    charIdx++;
+                    typingTarget.textContent = current.slice(0, charIdx);
+                    if (charIdx === current.length) {
+                        deleting = true;
+                        setTimeout(tick, 1800);
+                        return;
+                    }
+                } else {
+                    charIdx--;
+                    typingTarget.textContent = current.slice(0, charIdx);
+                    if (charIdx === 0) {
+                        deleting = false;
+                        phraseIdx = (phraseIdx + 1) % phrases.length;
+                    }
+                }
+                setTimeout(tick, deleting ? 30 : 55);
+            }
+            tick();
+        }
+    }
+
+    /* ============================================================
+       СЧЁТЧИКИ
+       ============================================================ */
+    const counters = document.querySelectorAll('.hero-metric-num');
+
+    if (counters.length) {
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            counters.forEach(c => c.textContent = c.dataset.count);
+        } else {
+            const counterIO = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    const el = e.target;
+                    const target = parseInt(el.dataset.count, 10) || 0;
+                    let n = 0;
+                    const step = Math.max(1, Math.ceil(target / 30));
+                    const timer = setInterval(() => {
+                        n += step;
+                        if (n >= target) {
+                            n = target;
+                            clearInterval(timer);
+                        }
+                        el.textContent = n;
+                    }, 40);
+                    counterIO.unobserve(el);
+                });
+            }, { threshold: 0.6 });
+            counters.forEach(c => counterIO.observe(c));
+        }
+    }
+
+    /* ============================================================
+       REVEAL-АНИМАЦИИ
+       ============================================================ */
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length) {
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            reveals.forEach(el => el.classList.add('visible'));
+        } else {
+            const revealIO = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        revealIO.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            reveals.forEach(el => revealIO.observe(el));
+        }
+    }
+
+    /* ============================================================
+       АКТИВНАЯ ССЫЛКА В САЙДБАРЕ
+       ============================================================ */
+    const links = document.querySelectorAll('.sidebar nav a');
+    const sections = Array.from(document.querySelectorAll('section[id], .hero[id]'));
+
+    function updateActive() {
+        if (!links.length || !sections.length) return;
+        const pos = window.scrollY + 120;
+        let current = sections[0].id;
+        sections.forEach(s => {
+            if (s.offsetTop <= pos) current = s.id;
+        });
+        links.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+    }
+
+    if (links.length && sections.length) {
+        window.addEventListener('scroll', updateActive, { passive: true });
+        updateActive();
+    }
+
+    /* ============================================================
+       ПРОГРЕСС ЧТЕНИЯ
+       ============================================================ */
+    const progress = document.getElementById('reading-progress');
+
+    function updateProgress() {
+        if (!progress) return;
+        const h = document.documentElement;
+        const total = h.scrollHeight - h.clientHeight;
+        const p = total > 0 ? (h.scrollTop / total) * 100 : 0;
+        progress.style.width = p + '%';
+    }
+
+    if (progress) {
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+    }
+
+    /* ============================================================
+       КНОПКА «НАВЕРХ»
+       ============================================================ */
+    const toTop = document.getElementById('back-to-top');
+
+    if (toTop) {
+        window.addEventListener('scroll', () => {
+            toTop.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+
+        toTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: reduceMotion ? 'auto' : 'smooth'
+            });
+        });
+    }
+})();
 </script>
 
 </body>
