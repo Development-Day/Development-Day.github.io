@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development-Day</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-brand">DEVELOPMENT-DAY</div>
+    <div class="topbar-actions">
+        <span class="topbar-user">typical community of students</span>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">◐</button>
+    </div>
+</div>
+
+<div class="layout">
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <h1>NAV</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about" class="active">О нас</a></li>
+                <li><a href="#directions">Направления</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#stack">Стек</a></li>
+                <li><a href="#join">Как присоединиться</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <span class="text-muted">EOF</span>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div class="page">
+
+            <article id="about">
+                <header><h2>О НАС</h2></header>
+                <p>Мы — студенческое сообщество, которое создаёт проекты в самых разных областях: машинное обучение, мобильные и десктопные приложения, инфраструктурные панели. Практикуем разработку на всех языках программирования.</p>
+            </article>
+
+            <div class="metrics-grid">
+                <div class="metric-card"><header>ML & AI</header><div class="metric-value">QISKIT</div><p>Квантовые интерпретаторы, PyTorch, TensorFlow</p></div>
+                <div class="metric-card"><header>INFRA</header><div class="metric-value">SERVERDECK</div><p>Панели управления, nginx, Samba, S3</p></div>
+                <div class="metric-card"><header>MOBILE</header><div class="metric-value">ANDROID</div><p>Kotlin, Swift, Flutter, React Native</p></div>
+            </div>
+
+            <article id="projects">
+                <header><h2>ПРОЕКТЫ</h2></header>
+                <div class="service-card">
+                    <header><h3>ServerDeck</h3><span class="badge badge-success">FLAGSHIP</span></header>
+                    <p>Панель управления Linux-сервером через веб-интерфейс.</p>
+                    <div class="service-paths">
+                        <code>CI passing</code> <code>Docker</code> <code>Python 3.12+</code> <code>MIT</code>
+                    </div>
+                    <footer>
+                        <a class="btn btn-sm" href="https://github.com/Development-Day/ServerDeck">VIEW</a>
+                    </footer>
+                </div>
+                <div class="service-card">
+                    <header><h3>samba-webmanager</h3><span class="badge">PYTHON</span></header>
+                    <p>Веб-интерфейс для управления Samba на Debian / Ubuntu.</p>
+                    <footer>
+                        <a class="btn btn-sm" href="https://github.com/Development-Day/samba-webmanager-v.0.1.0">VIEW</a>
+                    </footer>
+                </div>
+                <div class="service-card">
+                    <header><h3>quantum-interpreter</h3><span class="badge">QISKIT</span></header>
+                    <p>Гибридный классическо-квантовый интерпретатор. CLI / REPL / GUI.</p>
+                    <footer>
+                        <a class="btn btn-sm" href="https://github.com/Development-Day/quantum-interpreter-v.0.1.0">VIEW</a>
+                    </footer>
+                </div>
+            </article>
+
+            <article id="join">
+                <header><h2>КАК ПРИСОЕДИНИТЬСЯ</h2></header>
+                <table>
+                    <thead><tr><th>ШАГ</th><th>ДЕЙСТВИЕ</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>Выбери проект или предложи идею в Issues</td></tr>
+                        <tr><td>2</td><td>Сделай fork и внеси изменения</td></tr>
+                        <tr><td>3</td><td>Отправь Pull Request</td></tr>
+                        <tr><td>4</td><td>Обсуждай в Discussions</td></tr>
+                    </tbody>
+                </table>
+            </article>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    // Theme toggle (соответствует data-theme из app.css)
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    btn.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    });
+    const saved = localStorage.getItem('theme');
+    if (saved) html.setAttribute('data-theme', saved);
+</script>
+
+</body>
+</html>
