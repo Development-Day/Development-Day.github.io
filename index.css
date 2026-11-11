@@ -1,6 +1,6 @@
 /* ============================================================
    index.css — оформление лендинга Development-Day
-   Только визуал: пропорции, ритм, читаемость.
+   Финальная версия: пропорции, ритм, адаптив.
    Подключается ПОСЛЕ app.css (мини-версии).
    ============================================================ */
 
@@ -14,6 +14,7 @@
     border: 2px solid var(--border);
     padding: 8px 14px;
     font-size: 12px;
+    letter-spacing: 1px;
     transition: top 0.2s;
 }
 .skip-link:focus { top: 12px; }
@@ -30,10 +31,10 @@
 }
 
 /* ============================================================
-   TOPBAR — фиксированная высота, аккуратные отступы
+   TOPBAR
    ============================================================ */
 .topbar {
-    padding: 0 25px;
+    padding: 0 24px;
     height: 56px;
     min-height: 56px;
 }
@@ -41,15 +42,19 @@
 .topbar-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     min-width: 0;
 }
 
 .topbar-brand {
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: bold;
     letter-spacing: 4px;
+    color: var(--fg-bright);
+    text-shadow: var(--shadow-text-glow-strong);
     white-space: nowrap;
 }
+.topbar-brand:hover { color: var(--accent-bright); }
 
 .topbar-actions {
     display: flex;
@@ -88,7 +93,8 @@
 }
 
 .theme-toggle {
-    width: 36px; height: 36px;
+    width: 36px;
+    height: 36px;
     font-size: 15px;
 }
 
@@ -103,6 +109,7 @@
     border: 2px solid var(--border);
     cursor: pointer;
     padding: 0;
+    flex-shrink: 0;
 }
 .menu-toggle span {
     display: block;
@@ -116,7 +123,7 @@
 .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ============================================================
-   LAYOUT — сайдбар + контент
+   LAYOUT
    ============================================================ */
 .layout {
     display: flex;
@@ -155,7 +162,6 @@
     padding: 16px 22px;
     font-size: 10px;
 }
-
 .sidebar-repo-link {
     display: block;
     margin-top: 8px;
@@ -190,7 +196,6 @@
 .page {
     padding: 28px 32px;
 }
-
 .page-profile {
     max-width: 1120px;
     width: 100%;
@@ -199,46 +204,76 @@
 }
 
 /* ============================================================
-   HERO — собранный, с чётким ритмом
+   HERO
    ============================================================ */
 .hero {
-    padding: 34px 28px 28px;
-    margin-bottom: 34px;
+    padding: 36px 28px 32px;
+    margin-bottom: 36px;
+    text-align: center;
 }
 
-.hero-ascii {
-    display: block;
-    margin: 0 auto 18px;
-    font-size: 8px;
-    line-height: 1.1;
-    letter-spacing: 0.4px;
-    text-align: left;
-    width: fit-content;
-    opacity: 0.85;
+/* Метка сообщества вместо ASCII */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--border-dim);
+    background: var(--bg-info);
+    color: var(--fg-bright);
+    margin-bottom: 18px;
+}
+.hero-badge .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 6px var(--success);
+    animation: pulse 2s infinite;
 }
 
 .hero-title {
-    font-size: 26px;
-    letter-spacing: 4px;
-    margin-bottom: 8px;
+    font-size: 28px;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    line-height: 1.1;
 }
 
 .hero-subtitle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     font-size: 12px;
     letter-spacing: 1.5px;
-    margin-bottom: 24px;
+    color: var(--fg-primary);
+    margin-bottom: 28px;
+    min-height: 1.6em;
+    max-width: 100%;
 }
+.hero-subtitle .prompt {
+    color: var(--accent);
+    font-weight: bold;
+    flex-shrink: 0;
+}
+.hero-subtitle .caret {
+    color: var(--accent);
+    animation: blink 1s steps(2, start) infinite;
+    flex-shrink: 0;
+}
+@keyframes blink { to { visibility: hidden; } }
 
-/* Метрики — единая «полоса» с разделителями */
+/* Метрики — единая полоса с разделителями */
 .hero-metrics {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 0;
     flex-wrap: wrap;
-    margin: 0 auto 24px;
+    margin: 0 auto 28px;
     padding: 18px 0;
-    max-width: 560px;
+    max-width: 520px;
     border-top: 1px dashed var(--border-dim);
     border-bottom: 1px dashed var(--border-dim);
 }
@@ -247,40 +282,39 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
+    gap: 4px;
     flex: 1 1 0;
     min-width: 100px;
-    padding: 0 12px;
+    padding: 0 14px;
     border-left: 1px dashed var(--border-dim);
 }
 .hero-metric:first-child { border-left: none; }
 .hero-metric-num {
-    font-size: 24px;
+    font-size: 26px;
     line-height: 1;
     letter-spacing: 0.5px;
 }
 .hero-metric-label {
     font-size: 9px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.8px;
 }
 
-/* Теги — аккуратной сеткой, не «кашей» */
+/* Теги */
 .hero-tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 6px;
-    margin-bottom: 24px;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 28px;
+    max-width: 600px;
 }
 .hero-tag {
-    padding: 4px 9px;
+    padding: 4px 10px;
     font-size: 9px;
     letter-spacing: 1px;
 }
 
+/* CTA */
 .hero-cta {
     display: flex;
     justify-content: center;
@@ -289,21 +323,22 @@
 }
 
 /* ============================================================
-   СЕКЦИИ — единый вертикальный ритм
+   СЕКЦИИ
    ============================================================ */
 .section {
-    margin-bottom: 36px;
+    margin-bottom: 38px;
 }
 
 .section-title {
     font-size: 13px;
     letter-spacing: 2px;
     padding-bottom: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     gap: 8px;
 }
 .section-title .prompt {
     font-size: 13px;
+    color: var(--accent);
 }
 
 /* Reveal */
@@ -333,17 +368,23 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-bottom: 0;
 }
 .direction-card header {
-    margin-bottom: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
 }
 .direction-card h3 {
     font-size: 11px;
     letter-spacing: 2px;
+    margin: 0;
 }
 .direction-card p {
     font-size: 12px;
     line-height: 1.55;
+    margin: 0;
 }
 
 /* ============================================================
@@ -357,19 +398,27 @@
 
 .project-card {
     padding: 20px 22px;
+    margin-bottom: 0;
 }
 
 .project-head {
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 .project-head h3 {
     font-size: 14px;
     letter-spacing: 1.5px;
+    margin: 0;
 }
 .project-badges {
+    display: flex;
     gap: 6px;
     flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
 .project-desc {
@@ -380,6 +429,8 @@
 .project-desc:last-of-type { margin-bottom: 0; }
 
 .project-tags {
+    display: flex;
+    flex-wrap: wrap;
     gap: 6px;
     margin-bottom: 12px;
 }
@@ -397,9 +448,13 @@
 }
 
 .project-footer {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
     margin-top: 14px;
     padding-top: 14px;
-    gap: 8px;
+    border-top: 1px solid var(--border-subtle);
 }
 
 /* ============================================================
@@ -422,19 +477,45 @@
 }
 
 .stack-icons {
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    padding: 0;
+    margin: 0;
 }
 .stack-icons li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 5px 9px;
     font-size: 10px;
-    gap: 6px;
     letter-spacing: 0.5px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-dim);
+    color: var(--fg-primary);
+    transition: all 0.2s;
+}
+.stack-icons li:hover {
+    border-color: var(--accent-bright);
+    color: var(--accent-bright);
+    box-shadow: var(--shadow-glow-soft);
 }
 .stack-icons img {
     width: 13px;
     height: 13px;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Светлая тема: приглушаем иконки, чтобы не «резали глаз» */
+[data-theme="light"] .stack-icons img {
+    filter: grayscale(0.6) contrast(0.9);
+    opacity: 0.85;
+}
+[data-theme="light"] .stack-icons li:hover img {
+    filter: none;
+    opacity: 1;
 }
 
 /* ============================================================
@@ -456,36 +537,55 @@
 }
 .join-step .step-num {
     font-size: 16px;
-    margin-bottom: 2px;
     line-height: 1;
+    margin-bottom: 2px;
 }
 .join-step h4 {
     font-size: 10px;
     letter-spacing: 1.5px;
-    margin-bottom: 0;
+    margin: 0;
 }
 .join-step p {
     font-size: 11px;
     line-height: 1.55;
+    margin: 0;
 }
+.join-step a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.join-step a:hover { color: var(--accent-bright); }
 
 /* ============================================================
    FOOTER
    ============================================================ */
 .site-footer {
-    margin-top: 44px;
+    margin-top: 46px;
     padding: 22px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
 }
 .footer-col {
+    display: flex;
+    flex-direction: column;
     gap: 6px;
+    min-width: 0;
 }
 .footer-text {
     font-size: 10px;
     letter-spacing: 1.5px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
 }
+.footer-text.dim { color: var(--fg-dark); }
 .footer-links {
+    display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 /* ============================================================
@@ -539,28 +639,28 @@
         padding: 0 0 32px;
     }
 
-    /* Hero — компактнее */
+    /* Hero — компактный */
     .hero {
-        padding: 22px 16px 20px;
-        margin-bottom: 24px;
+        padding: 24px 16px 22px;
+        margin-bottom: 26px;
     }
-    .hero-ascii {
-        font-size: 6px;
-        line-height: 1.1;
+    .hero-badge {
+        font-size: 9px;
+        padding: 3px 10px;
         margin-bottom: 14px;
     }
     .hero-title {
         font-size: 1.25rem;
         letter-spacing: 3px;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
     }
     .hero-subtitle {
         font-size: 11px;
         letter-spacing: 1px;
-        margin-bottom: 18px;
+        margin-bottom: 20px;
     }
     .hero-metrics {
-        margin-bottom: 18px;
+        margin-bottom: 20px;
         padding: 14px 0;
         max-width: 100%;
     }
@@ -572,7 +672,7 @@
     .hero-metric-label { font-size: 8px; letter-spacing: 1px; }
 
     .hero-tags {
-        margin-bottom: 18px;
+        margin-bottom: 20px;
         gap: 5px;
     }
     .hero-tag {
@@ -627,7 +727,6 @@
         right: 16px;
     }
 
-    /* Отключаем hover-трансформации на тач */
     .direction-card:hover,
     .join-step:hover { transform: none; }
 }
@@ -638,7 +737,6 @@
 @media (max-width: 480px) {
     .topbar-brand { display: none; }
 
-    .hero-ascii { font-size: 5px; }
     .hero-title { font-size: 1.15rem; letter-spacing: 2px; }
     .hero-subtitle { font-size: 10px; }
     .hero-metric { min-width: 70px; padding: 0 6px; }
