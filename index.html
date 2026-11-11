@@ -25,13 +25,12 @@
     <div class="topbar-actions">
         <span class="topbar-status" title="Сообщество активно">
             <span class="status-dot" aria-hidden="true"></span>
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
             online
         </span>
         <span class="topbar-user">typical community of students</span>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
-            <svg class="ico theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <svg class="ico theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему" title="Переключить тему">
+            <span class="theme-icon-dark" aria-hidden="true">◐</span>
+            <span class="theme-icon-light" aria-hidden="true">◑</span>
         </button>
     </div>
 </header>
@@ -55,8 +54,7 @@
         <div class="sidebar-footer">
             <span class="text-muted">EOF</span>
             <a class="sidebar-repo-link" href="https://github.com/Development-Day" target="_blank" rel="noopener">
-                <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
-                github.com/Development-Day
+                github.com/Development-Day ↗
             </a>
         </div>
     </aside>
@@ -69,15 +67,15 @@
 
             <!-- HERO -->
             <section class="hero" id="about">
-                <div class="hero-badge" aria-hidden="true">
-                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                <div class="hero-badge">
+                    <span class="dot" aria-hidden="true"></span>
                     community · v0.1
                 </div>
 
                 <h1 class="hero-title">DEVELOPMENT-DAY</h1>
 
                 <p class="hero-subtitle">
-                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                    <span class="prompt" aria-hidden="true">&gt;</span>
                     <span id="typing-target"></span><span class="caret" aria-hidden="true">▌</span>
                 </p>
 
@@ -111,64 +109,39 @@
                 </div>
 
                 <div class="hero-cta">
-                    <a class="btn btn-success" href="#projects">
-                        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        СМОТРЕТЬ ПРОЕКТЫ
-                    </a>
-                    <a class="btn btn-secondary" href="https://github.com/Development-Day/Development-Day/discussions" target="_blank" rel="noopener">
-                        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                        DISCUSSIONS
-                    </a>
+                    <a class="btn btn-success" href="#projects">[&gt;] СМОТРЕТЬ ПРОЕКТЫ</a>
+                    <a class="btn btn-secondary" href="https://github.com/Development-Day/Development-Day/discussions" target="_blank" rel="noopener">DISCUSSIONS ↗</a>
                 </div>
             </section>
 
             <!-- НАПРАВЛЕНИЯ -->
             <section class="section reveal" id="directions">
                 <h2 class="section-title">
-                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-                    ls ./directions
+                    <span class="prompt">$</span> ls ./directions
                 </h2>
                 <div class="directions-grid">
                     <article class="direction-card">
-                        <header>
-                            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3 3 3 0 0 0-1 5.83A3 3 0 0 0 6 20a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3 3 3 0 0 0 1-5.17A3 3 0 0 0 18 9a3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><path d="M9 9h.01M15 9h.01M9.5 14a2.5 2.5 0 0 0 5 0"/></svg>
-                            <h3>ML &amp; AI</h3>
-                        </header>
+                        <header><h3>ML &amp; AI</h3></header>
                         <p>Квантовые интерпретаторы, прикладные модели, эксперименты с Qiskit, PyTorch и TensorFlow.</p>
                     </article>
                     <article class="direction-card">
-                        <header>
-                            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                            <h3>INFRASTRUCTURE</h3>
-                        </header>
+                        <header><h3>INFRASTRUCTURE</h3></header>
                         <p>Панели управления серверами, веб-интерфейсы для администрирования, автоматизация развёртывания.</p>
                     </article>
                     <article class="direction-card">
-                        <header>
-                            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                            <h3>MOBILE</h3>
-                        </header>
+                        <header><h3>MOBILE</h3></header>
                         <p>Android и iOS приложения для повседневных задач — Kotlin, Swift, Flutter, React Native.</p>
                     </article>
                     <article class="direction-card">
-                        <header>
-                            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="12" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
-                            <h3>DESKTOP</h3>
-                        </header>
+                        <header><h3>DESKTOP</h3></header>
                         <p>Инструменты для работы, учёбы и автоматизации — Electron, Qt, .NET, Rust.</p>
                     </article>
                     <article class="direction-card">
-                        <header>
-                            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                            <h3>WEB &amp; SYSADMIN</h3>
-                        </header>
+                        <header><h3>WEB &amp; SYSADMIN</h3></header>
                         <p>Веб-интерфейсы для управления инфраструктурой, Samba, nginx, PHP-FPM.</p>
                     </article>
                     <article class="direction-card">
-                        <header>
-                            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <h3>COMMUNITY</h3>
-                        </header>
+                        <header><h3>COMMUNITY</h3></header>
                         <p>Code review, парное программирование, открытые обсуждения и обмен знаниями.</p>
                     </article>
                 </div>
@@ -177,8 +150,7 @@
             <!-- ПРОЕКТЫ -->
             <section class="section reveal" id="projects">
                 <h2 class="section-title">
-                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                    ls ./projects
+                    <span class="prompt">$</span> ls ./projects
                 </h2>
                 <div class="project-list">
 
@@ -198,10 +170,7 @@
                         <p class="project-desc">Развёртывание Laravel / Django / Next.js одной командой, выпуск SSL, настройка nginx / apache / PHP-FPM, резервное копирование в S3, браузерный терминал с журналированием, Git-развёртывание без простоя.</p>
                         <div class="project-note">ServerDeck — флагманский проект сообщества. Кластеры Kubernetes и мультитенантный хостинг запланированы в следующих версиях.</div>
                         <div class="project-footer">
-                            <a class="btn btn-sm" href="https://github.com/Development-Day/ServerDeck" target="_blank" rel="noopener">
-                                <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
-                                VIEW SOURCE
-                            </a>
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/ServerDeck" target="_blank" rel="noopener">VIEW SOURCE ↗</a>
                         </div>
                     </article>
 
@@ -215,10 +184,7 @@
                             <code>Python</code><code>Flask</code><code>Linux</code>
                         </div>
                         <div class="project-footer">
-                            <a class="btn btn-sm" href="https://github.com/Development-Day/samba-webmanager-v.0.1.0" target="_blank" rel="noopener">
-                                <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
-                                VIEW SOURCE
-                            </a>
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/samba-webmanager-v.0.1.0" target="_blank" rel="noopener">VIEW SOURCE ↗</a>
                         </div>
                     </article>
 
@@ -232,10 +198,7 @@
                             <code>Python</code><code>Qiskit</code><code>NumPy</code>
                         </div>
                         <div class="project-footer">
-                            <a class="btn btn-sm" href="https://github.com/Development-Day/quantum-interpreter-v.0.1.0" target="_blank" rel="noopener">
-                                <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
-                                VIEW SOURCE
-                            </a>
+                            <a class="btn btn-sm" href="https://github.com/Development-Day/quantum-interpreter-v.0.1.0" target="_blank" rel="noopener">VIEW SOURCE ↗</a>
                         </div>
                     </article>
 
@@ -245,65 +208,64 @@
             <!-- СТЕК -->
             <section class="section reveal" id="stack">
                 <h2 class="section-title">
-                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    cat stack.txt
+                    <span class="prompt">$</span> cat stack.txt
                 </h2>
                 <div class="stack-grid">
                     <div class="stack-block">
                         <h4>Языки программирования</h4>
-                        <ul class="stack-icons">
-                            <li><img src="https://cdn.simpleicons.org/python/3776AB" alt="" loading="lazy"><span>Python</span></li>
-                            <li><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="" loading="lazy"><span>JavaScript</span></li>
-                            <li><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="" loading="lazy"><span>TypeScript</span></li>
-                            <li><img src="https://cdn.simpleicons.org/rust/ffffff" alt="" loading="lazy"><span>Rust</span></li>
-                            <li><img src="https://cdn.simpleicons.org/go/00ADD8" alt="" loading="lazy"><span>Go</span></li>
-                            <li><img src="https://cdn.simpleicons.org/kotlin/7F52FF" alt="" loading="lazy"><span>Kotlin</span></li>
-                            <li><img src="https://cdn.simpleicons.org/swift/FA7343" alt="" loading="lazy"><span>Swift</span></li>
-                            <li><img src="https://cdn.simpleicons.org/openjdk/ED8B00" alt="" loading="lazy"><span>Java</span></li>
-                            <li><img src="https://cdn.simpleicons.org/cplusplus/00599C" alt="" loading="lazy"><span>C++</span></li>
-                            <li><img src="https://cdn.simpleicons.org/c/A8B9CC" alt="" loading="lazy"><span>C</span></li>
-                            <li><img src="https://cdn.simpleicons.org/dotnet/512BD4" alt="" loading="lazy"><span>C#</span></li>
-                            <li><img src="https://cdn.simpleicons.org/ruby/CC342D" alt="" loading="lazy"><span>Ruby</span></li>
-                            <li><img src="https://cdn.simpleicons.org/php/777BB4" alt="" loading="lazy"><span>PHP</span></li>
-                            <li><img src="https://cdn.simpleicons.org/dart/0175C2" alt="" loading="lazy"><span>Dart</span></li>
-                            <li><img src="https://cdn.simpleicons.org/r/276DC3" alt="" loading="lazy"><span>R</span></li>
-                            <li><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="" loading="lazy"><span>SQL</span></li>
-                            <li><img src="https://cdn.simpleicons.org/gnubash/4EAA25" alt="" loading="lazy"><span>Bash</span></li>
+                        <ul class="stack-list">
+                            <li><span class="bullet" aria-hidden="true">•</span>Python</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>JavaScript</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>TypeScript</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Rust</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Go</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Kotlin</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Swift</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Java</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>C++</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>C</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>C#</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Ruby</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>PHP</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Dart</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>R</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>SQL</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Bash</li>
                         </ul>
                     </div>
                     <div class="stack-block">
                         <h4>ML / Data</h4>
-                        <ul class="stack-icons">
-                            <li><img src="https://cdn.simpleicons.org/pytorch/EE4C2C" alt="" loading="lazy"><span>PyTorch</span></li>
-                            <li><img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="" loading="lazy"><span>TensorFlow</span></li>
-                            <li><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="" loading="lazy"><span>scikit-learn</span></li>
-                            <li><img src="https://cdn.simpleicons.org/qiskit/6929C4" alt="" loading="lazy"><span>Qiskit</span></li>
-                            <li><img src="https://cdn.simpleicons.org/pandas/150458" alt="" loading="lazy"><span>Pandas</span></li>
-                            <li><img src="https://cdn.simpleicons.org/numpy/013243" alt="" loading="lazy"><span>NumPy</span></li>
+                        <ul class="stack-list">
+                            <li><span class="bullet" aria-hidden="true">•</span>PyTorch</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>TensorFlow</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>scikit-learn</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Qiskit</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Pandas</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>NumPy</li>
                         </ul>
                     </div>
                     <div class="stack-block">
                         <h4>Мобильная / десктоп</h4>
-                        <ul class="stack-icons">
-                            <li><img src="https://cdn.simpleicons.org/android/3DDC84" alt="" loading="lazy"><span>Android</span></li>
-                            <li><img src="https://cdn.simpleicons.org/apple/ffffff" alt="" loading="lazy"><span>iOS</span></li>
-                            <li><img src="https://cdn.simpleicons.org/flutter/02569B" alt="" loading="lazy"><span>Flutter</span></li>
-                            <li><img src="https://cdn.simpleicons.org/react/61DAFB" alt="" loading="lazy"><span>React Native</span></li>
-                            <li><img src="https://cdn.simpleicons.org/electron/47848F" alt="" loading="lazy"><span>Electron</span></li>
-                            <li><img src="https://cdn.simpleicons.org/qt/41CD52" alt="" loading="lazy"><span>Qt</span></li>
-                            <li><img src="https://cdn.simpleicons.org/dotnet/512BD4" alt="" loading="lazy"><span>.NET</span></li>
+                        <ul class="stack-list">
+                            <li><span class="bullet" aria-hidden="true">•</span>Android</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>iOS</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Flutter</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>React Native</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Electron</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Qt</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>.NET</li>
                         </ul>
                     </div>
                     <div class="stack-block">
                         <h4>Инфраструктура / качество</h4>
-                        <ul class="stack-icons">
-                            <li><img src="https://cdn.simpleicons.org/git/F05032" alt="" loading="lazy"><span>Git</span></li>
-                            <li><img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="" loading="lazy"><span>GitHub Actions</span></li>
-                            <li><img src="https://cdn.simpleicons.org/docker/2496ED" alt="" loading="lazy"><span>Docker</span></li>
-                            <li><img src="https://cdn.simpleicons.org/linux/FCC624" alt="" loading="lazy"><span>Linux</span></li>
-                            <li><img src="https://cdn.simpleicons.org/nginx/009639" alt="" loading="lazy"><span>nginx</span></li>
-                            <li><img src="https://cdn.simpleicons.org/apache/D22128" alt="" loading="lazy"><span>Apache</span></li>
-                            <li><img src="https://cdn.simpleicons.org/amazons3/569A31" alt="" loading="lazy"><span>S3</span></li>
+                        <ul class="stack-list">
+                            <li><span class="bullet" aria-hidden="true">•</span>Git</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>GitHub Actions</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Docker</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Linux</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>nginx</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>Apache</li>
+                            <li><span class="bullet" aria-hidden="true">•</span>S3</li>
                         </ul>
                     </div>
                 </div>
@@ -312,27 +274,26 @@
             <!-- JOIN -->
             <section class="section reveal" id="join">
                 <h2 class="section-title">
-                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-                    ./join.sh --steps
+                    <span class="prompt">$</span> ./join.sh --steps
                 </h2>
                 <div class="join-grid">
                     <div class="join-step">
-                        <svg class="ico step-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <span class="step-num" aria-hidden="true">[1]</span>
                         <h4>Выбери проект</h4>
                         <p>Найди проект выше или предложи идею в <a href="https://github.com/Development-Day/Development-Day/issues" target="_blank" rel="noopener">Issues</a>.</p>
                     </div>
                     <div class="join-step">
-                        <svg class="ico step-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="6" x2="8.12" y2="6"/><line x1="20" y1="18" x2="8.12" y2="18"/><line x1="20" y1="6" x2="20" y2="18"/></svg>
+                        <span class="step-num" aria-hidden="true">[2]</span>
                         <h4>Сделай fork</h4>
                         <p>Создай ветку и внеси изменения — даже если это первая правка.</p>
                     </div>
                     <div class="join-step">
-                        <svg class="ico step-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><line x1="6" y1="21" x2="6" y2="9"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                        <span class="step-num" aria-hidden="true">[3]</span>
                         <h4>Отправь PR</h4>
                         <p>Pull request с описанием изменений. Ревью поможем пройти.</p>
                     </div>
                     <div class="join-step">
-                        <svg class="ico step-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        <span class="step-num" aria-hidden="true">[4]</span>
                         <h4>Обсуждай</h4>
                         <p>Присоединяйся к <a href="https://github.com/Development-Day/Development-Day/discussions" target="_blank" rel="noopener">Discussions</a>.</p>
                     </div>
@@ -346,18 +307,9 @@
                     <span class="footer-text dim">Открытый код — открытые знания.</span>
                 </div>
                 <div class="footer-links">
-                    <a class="btn btn-sm btn-secondary" href="https://github.com/Development-Day/Development-Day/issues" target="_blank" rel="noopener">
-                        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        ISSUES
-                    </a>
-                    <a class="btn btn-sm btn-secondary" href="https://github.com/Development-Day/Development-Day/discussions" target="_blank" rel="noopener">
-                        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                        DISCUSSIONS
-                    </a>
-                    <a class="btn btn-sm" href="https://github.com/Development-Day" target="_blank" rel="noopener">
-                        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
-                        GITHUB
-                    </a>
+                    <a class="btn btn-sm btn-secondary" href="https://github.com/Development-Day/Development-Day/issues" target="_blank" rel="noopener">ISSUES ↗</a>
+                    <a class="btn btn-sm btn-secondary" href="https://github.com/Development-Day/Development-Day/discussions" target="_blank" rel="noopener">DISCUSSIONS ↗</a>
+                    <a class="btn btn-sm" href="https://github.com/Development-Day" target="_blank" rel="noopener">GITHUB ↗</a>
                 </div>
             </footer>
 
@@ -365,9 +317,7 @@
     </main>
 </div>
 
-<button class="back-to-top" id="back-to-top" aria-label="Наверх" title="Наверх">
-    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-</button>
+<button class="back-to-top" id="back-to-top" aria-label="Наверх" title="Наверх">↑</button>
 
 <script>
 (function () {
@@ -376,9 +326,7 @@
     const html = document.documentElement;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ============================================================
-       ТЕМА
-       ============================================================ */
+    /* ТЕМА */
     const themeBtn = document.getElementById('theme-toggle');
     if (themeBtn) {
         themeBtn.addEventListener('click', () => {
@@ -394,9 +342,7 @@
         }
     } catch (e) {}
 
-    /* ============================================================
-       МОБИЛЬНОЕ МЕНЮ
-       ============================================================ */
+    /* МЕНЮ */
     const menuBtn = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebar-overlay');
@@ -415,21 +361,16 @@
         menuBtn.setAttribute('aria-expanded', 'true');
         document.body.classList.add('menu-open');
     }
-
     if (menuBtn && sidebar && overlay) {
         menuBtn.addEventListener('click', () => {
             sidebar.classList.contains('open') ? closeMenu() : openMenu();
         });
         overlay.addEventListener('click', closeMenu);
         sidebar.querySelectorAll('nav a').forEach(a => a.addEventListener('click', closeMenu));
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeMenu();
-        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
     }
 
-    /* ============================================================
-       TYPING-ЭФФЕКТ
-       ============================================================ */
+    /* TYPING */
     const typingTarget = document.getElementById('typing-target');
     const phrases = [
         'Разработка ради обучения. Код ради пользы.',
@@ -437,18 +378,13 @@
         'Python • Rust • Kotlin • Swift • C++ • Go',
         'Открытый код — открытые знания.'
     ];
-
     if (typingTarget) {
         if (reduceMotion) {
             typingTarget.textContent = phrases[0];
         } else {
-            let phraseIdx = 0;
-            let charIdx = 0;
-            let deleting = false;
-
-            function tick() {
+            let phraseIdx = 0, charIdx = 0, deleting = false;
+            (function tick() {
                 const current = phrases[phraseIdx];
-
                 if (!deleting) {
                     charIdx++;
                     typingTarget.textContent = current.slice(0, charIdx);
@@ -466,16 +402,12 @@
                     }
                 }
                 setTimeout(tick, deleting ? 30 : 55);
-            }
-            tick();
+            })();
         }
     }
 
-    /* ============================================================
-       СЧЁТЧИКИ
-       ============================================================ */
+    /* СЧЁТЧИКИ */
     const counters = document.querySelectorAll('.hero-metric-num');
-
     if (counters.length) {
         if (reduceMotion || !('IntersectionObserver' in window)) {
             counters.forEach(c => c.textContent = c.dataset.count);
@@ -489,10 +421,7 @@
                     const step = Math.max(1, Math.ceil(target / 30));
                     const timer = setInterval(() => {
                         n += step;
-                        if (n >= target) {
-                            n = target;
-                            clearInterval(timer);
-                        }
+                        if (n >= target) { n = target; clearInterval(timer); }
                         el.textContent = n;
                     }, 40);
                     counterIO.unobserve(el);
@@ -502,9 +431,7 @@
         }
     }
 
-    /* ============================================================
-       REVEAL-АНИМАЦИИ
-       ============================================================ */
+    /* REVEAL */
     const reveals = document.querySelectorAll('.reveal');
     if (reveals.length) {
         if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -522,34 +449,23 @@
         }
     }
 
-    /* ============================================================
-       АКТИВНАЯ ССЫЛКА В САЙДБАРЕ
-       ============================================================ */
+    /* АКТИВНАЯ ССЫЛКА */
     const links = document.querySelectorAll('.sidebar nav a');
     const sections = Array.from(document.querySelectorAll('section[id], .hero[id]'));
-
     function updateActive() {
         if (!links.length || !sections.length) return;
         const pos = window.scrollY + 120;
         let current = sections[0].id;
-        sections.forEach(s => {
-            if (s.offsetTop <= pos) current = s.id;
-        });
-        links.forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-        });
+        sections.forEach(s => { if (s.offsetTop <= pos) current = s.id; });
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
     }
-
     if (links.length && sections.length) {
         window.addEventListener('scroll', updateActive, { passive: true });
         updateActive();
     }
 
-    /* ============================================================
-       ПРОГРЕСС ЧТЕНИЯ
-       ============================================================ */
+    /* ПРОГРЕСС */
     const progress = document.getElementById('reading-progress');
-
     function updateProgress() {
         if (!progress) return;
         const h = document.documentElement;
@@ -557,27 +473,19 @@
         const p = total > 0 ? (h.scrollTop / total) * 100 : 0;
         progress.style.width = p + '%';
     }
-
     if (progress) {
         window.addEventListener('scroll', updateProgress, { passive: true });
         updateProgress();
     }
 
-    /* ============================================================
-       КНОПКА «НАВЕРХ»
-       ============================================================ */
+    /* НАВЕРХ */
     const toTop = document.getElementById('back-to-top');
-
     if (toTop) {
         window.addEventListener('scroll', () => {
             toTop.classList.toggle('visible', window.scrollY > 400);
         }, { passive: true });
-
         toTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: reduceMotion ? 'auto' : 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
         });
     }
 })();
