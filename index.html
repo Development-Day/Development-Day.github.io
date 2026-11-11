@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Development-Day — студенческое сообщество: ML, инфраструктура, мобильные и десктопные приложения. Открытый код — открытые знания.">
+    <meta name="theme-color" content="#000a0a">
     <title>Development-Day — Разработка ради обучения</title>
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="index.css">
@@ -11,20 +12,18 @@
 <body>
 
 <a class="skip-link" href="#main-content">Перейти к содержимому</a>
-
-<!-- ПРОГРЕСС ЧТЕНИЯ -->
 <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
 
 <!-- ШАПКА -->
 <header class="topbar">
     <div class="topbar-left">
-        <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="sidebar">
             <span></span><span></span><span></span>
         </button>
-        <div class="topbar-brand">DEVELOPMENT-DAY</div>
+        <a class="topbar-brand" href="#about">DEVELOPMENT-DAY</a>
     </div>
     <div class="topbar-actions">
-        <span class="topbar-status">
+        <span class="topbar-status" title="Сообщество активно">
             <span class="status-dot"></span> online
         </span>
         <span class="topbar-user">typical community of students</span>
@@ -64,16 +63,14 @@
 
             <!-- HERO -->
             <section class="hero" id="about">
-                <pre class="hero-ascii" aria-hidden="true">
- ____                            _             _     ____              
-|  _ \  _____   _____ _ __ ___  | |_ ___      | |   |  _ \  __ _ _   _ 
-| | | |/ _ \ \ / / _ \ '_ ` _ \ | __/ _ \_____| |   | | | |/ _` | | | |
-| |_| |  __/\ V /  __/ | | | | || ||  __/_____| |___| |_| | (_| | |_| |
-|____/ \___| \_/ \___|_| |_| |_| \__\___|     |_____|____/ \__,_|\__, |
-                                                                 |___/ </pre>
+                <div class="hero-badge" aria-hidden="true">
+                    <span class="dot"></span> community · v0.1
+                </div>
 
                 <h1 class="hero-title">DEVELOPMENT-DAY</h1>
+
                 <p class="hero-subtitle">
+                    <span class="prompt" aria-hidden="true">&gt;</span>
                     <span id="typing-target"></span><span class="caret" aria-hidden="true">▌</span>
                 </p>
 
@@ -116,30 +113,30 @@
             <section class="section reveal" id="directions">
                 <h2 class="section-title"><span class="prompt">$</span> ls ./directions</h2>
                 <div class="directions-grid">
-                    <div class="direction-card">
+                    <article class="direction-card">
                         <header><h3>ML &amp; AI</h3></header>
                         <p>Квантовые интерпретаторы, прикладные модели, эксперименты с Qiskit, PyTorch и TensorFlow.</p>
-                    </div>
-                    <div class="direction-card">
+                    </article>
+                    <article class="direction-card">
                         <header><h3>INFRASTRUCTURE</h3></header>
                         <p>Панели управления серверами, веб-интерфейсы для администрирования, автоматизация развёртывания.</p>
-                    </div>
-                    <div class="direction-card">
+                    </article>
+                    <article class="direction-card">
                         <header><h3>MOBILE</h3></header>
                         <p>Android и iOS приложения для повседневных задач — Kotlin, Swift, Flutter, React Native.</p>
-                    </div>
-                    <div class="direction-card">
+                    </article>
+                    <article class="direction-card">
                         <header><h3>DESKTOP</h3></header>
                         <p>Инструменты для работы, учёбы и автоматизации — Electron, Qt, .NET, Rust.</p>
-                    </div>
-                    <div class="direction-card">
+                    </article>
+                    <article class="direction-card">
                         <header><h3>WEB &amp; SYSADMIN</h3></header>
                         <p>Веб-интерфейсы для управления инфраструктурой, Samba, nginx, PHP-FPM.</p>
-                    </div>
-                    <div class="direction-card">
+                    </article>
+                    <article class="direction-card">
                         <header><h3>COMMUNITY</h3></header>
                         <p>Code review, парное программирование, открытые обсуждения и обмен знаниями.</p>
-                    </div>
+                    </article>
                 </div>
             </section>
 
@@ -307,7 +304,6 @@
     </main>
 </div>
 
-<!-- КНОПКА НАВЕРХ -->
 <button class="back-to-top" id="back-to-top" aria-label="Наверх" title="Наверх">↑</button>
 
 <script>
@@ -407,7 +403,7 @@
         counters.forEach(c => c.textContent = c.dataset.count);
     }
 
-    /* ---------- Reveal-анимации ---------- */
+    /* ---------- Reveal ---------- */
     if (!reduceMotion) {
         const revealIO = new IntersectionObserver(entries => {
             entries.forEach(e => {
@@ -422,7 +418,7 @@
         document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
     }
 
-    /* ---------- Активная ссылка в сайдбаре ---------- */
+    /* ---------- Активная ссылка ---------- */
     const links = document.querySelectorAll('.sidebar nav a');
     const sections = [...document.querySelectorAll('section[id], .hero[id]')];
     function updateActive() {
@@ -445,7 +441,7 @@
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
 
-    /* ---------- Кнопка «наверх» ---------- */
+    /* ---------- Наверх ---------- */
     const toTop = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
         toTop.classList.toggle('visible', window.scrollY > 400);
