@@ -1,14 +1,8 @@
 /* ============================================================
-   app.css — мини-версия для лендинга Development-Day
-   Только то, что используется на странице профиля.
-
-   Темы: <html data-theme="dark|light">
-   Подключать ДО index.css.
+   app.css — ТОЛЬКО переменные темы + базовая типографика.
+   Всё оформление страницы — в index.css.
    ============================================================ */
 
-/* ============================================================
-   DARK (по умолчанию)
-   ============================================================ */
 :root,
 [data-theme="dark"] {
     /* Backgrounds */
@@ -24,19 +18,16 @@
     --bg-success:       #001a00;
     --bg-warning:       #1a1000;
     --bg-info:          #001a1a;
-    --bg-elevated:      #0e1116;
 
     /* Text */
     --fg-primary:       #00ffff;
     --fg-bright:        #66ffff;
     --fg-dim:           #006666;
     --fg-dark:          #003333;
-    --fg-on-accent:     #000000;
 
     /* Accents */
     --accent:           #00ffff;
     --accent-bright:    #66ffff;
-    --accent-dim:       #003333;
     --success:          #00ff66;
     --success-bright:   #66ff99;
     --warning:          #ffaa00;
@@ -50,7 +41,7 @@
     --border-dim:       rgba(0, 255, 255, 0.2);
     --border-subtle:    rgba(0, 255, 255, 0.15);
 
-    /* Shadows / Glow */
+    /* Shadows */
     --shadow-glow:        0 0 20px rgba(0, 255, 255, 0.15);
     --shadow-glow-strong: 0 0 40px rgba(0, 255, 255, 0.4);
     --shadow-glow-soft:   0 0 20px rgba(0, 255, 255, 0.08);
@@ -70,10 +61,6 @@
     color-scheme: dark;
 }
 
-
-/* ============================================================
-   LIGHT
-   ============================================================ */
 [data-theme="light"] {
     --bg-root:          #d9dde0;
     --bg-page:          #e1e4e6;
@@ -87,17 +74,14 @@
     --bg-success:       #eaf1ed;
     --bg-warning:       #f5efe6;
     --bg-info:          #e6ecee;
-    --bg-elevated:      #f7f8f9;
 
     --fg-primary:       #232a2c;
     --fg-bright:        #3f5254;
     --fg-dim:           #6c7476;
     --fg-dark:          #aab1b3;
-    --fg-on-accent:     #ffffff;
 
     --accent:           #3f5254;
     --accent-bright:    #566b6d;
-    --accent-dim:       #d3d9db;
     --success:          #3f6b56;
     --success-bright:   #4f8069;
     --warning:          #8a6a2f;
@@ -118,7 +102,6 @@
     --shadow-text-glow-strong: 0 0 10px rgba(63, 82, 84, 0.42);
 
     --grid-color:       rgba(35, 42, 44, 0.22);
-    --grid-size:        48px;
 
     --scrollbar-track:  #e1e4e6;
     --scrollbar-thumb:  #9aa2a4;
@@ -127,15 +110,11 @@
     color-scheme: light;
 }
 
-
-/* ============================================================
-   БАЗА
-   ============================================================ */
+/* ---------- База ---------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border-radius: 0 !important;
 }
 
 html, body {
@@ -148,21 +127,10 @@ body {
     background-color: var(--bg-root);
     color: var(--fg-primary);
     font-family: "Consolas", "Courier New", monospace;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.5;
     min-height: 100vh;
-}
-
-/* Плавная смена темы */
-html.theme-transition,
-html.theme-transition *,
-html.theme-transition *::before,
-html.theme-transition *::after {
-    transition:
-        background-color 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease !important;
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -177,23 +145,16 @@ a:hover {
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--fg-bright);
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: inherit;
     font-weight: bold;
     letter-spacing: 2px;
-    text-shadow: var(--shadow-text-glow);
     margin-bottom: 15px;
 }
-h1 { font-size: 20px; letter-spacing: 4px; }
-h2 { font-size: 18px; }
-h3 { font-size: 16px; }
-h4 { font-size: 14px; }
 
-p { margin-bottom: 10px; color: var(--fg-primary); }
-
-small, .text-muted { font-size: 10px; color: var(--fg-dim); }
+p { margin-bottom: 10px; }
 
 code, kbd {
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: inherit;
     background: var(--bg-code);
     border: 1px solid var(--border-dim);
     padding: 1px 6px;
@@ -203,336 +164,10 @@ code, kbd {
 
 img, video { max-width: 100%; height: auto; }
 
+/* SVG не должен растягиваться ни при каких условиях */
+svg { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 
-/* ============================================================
-   TOPBAR
-   ============================================================ */
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--bg-topbar);
-    border-bottom: 2px solid var(--border);
-    padding: 12px 25px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: var(--shadow-glow);
-}
-
-.topbar-brand {
-    color: var(--fg-bright);
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-shadow: var(--shadow-text-glow-strong);
-}
-
-.topbar-user {
-    color: var(--fg-primary);
-    font-size: 12px;
-    margin-right: 20px;
-}
-
-.topbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-
-/* ============================================================
-   THEME TOGGLE
-   ============================================================ */
-.theme-toggle {
-    background: transparent;
-    border: 2px solid var(--border);
-    color: var(--fg-primary);
-    width: 34px;
-    height: 34px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    padding: 0;
-    margin: 0;
-    flex-shrink: 0;
-    font-family: inherit;
-    font-size: 16px;
-}
-.theme-toggle:hover {
-    background: var(--bg-hover);
-    border-color: var(--accent-bright);
-    color: var(--accent-bright);
-    box-shadow: var(--shadow-glow);
-}
-.theme-toggle:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-}
-
-
-/* ============================================================
-   LAYOUT
-   ============================================================ */
-.layout {
-    display: flex;
-    min-height: calc(100vh - 50px);
-}
-
-.sidebar {
-    width: 220px;
-    background-color: var(--bg-sidebar);
-    border-right: 2px solid var(--border);
-    padding: 20px 0;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar .brand {
-    padding: 0 20px 15px;
-    border-bottom: 1px solid var(--border-dim);
-    margin-bottom: 15px;
-}
-.sidebar .brand h1 {
-    font-size: 14px;
-    letter-spacing: 3px;
-    margin: 0;
-}
-
-.sidebar nav ul { list-style: none; }
-.sidebar nav li { margin: 0; }
-
-.sidebar nav a {
-    display: block;
-    padding: 10px 20px;
-    color: var(--fg-dim);
-    font-size: 11px;
-    letter-spacing: 1px;
-    border-left: 3px solid transparent;
-    transition: all 0.2s;
-    text-transform: uppercase;
-}
-.sidebar nav a:hover {
-    background-color: var(--bg-hover);
-    color: var(--fg-primary);
-    border-left-color: var(--accent);
-    text-shadow: var(--shadow-text-glow);
-}
-.sidebar nav a.active {
-    background-color: var(--bg-active);
-    color: var(--fg-bright);
-    border-left-color: var(--fg-bright);
-    text-shadow: var(--shadow-text-glow);
-}
-
-.sidebar-footer {
-    margin-top: auto;
-    padding: 15px 20px;
-    border-top: 1px solid var(--border-dim);
-    font-size: 10px;
-}
-
-.content {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* ============================================================
-   .page + фон-сетка
-   ============================================================ */
-.page {
-    padding: 25px 30px;
-    flex: 1;
-    background-color: var(--bg-page);
-    background-image:
-        linear-gradient(var(--grid-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-    background-size: var(--grid-size) var(--grid-size);
-    background-attachment: local;
-    min-height: calc(100vh - 50px);
-    position: relative;
-}
-
-[data-theme="light"] .page {
-    box-shadow:
-        inset 0 0 60px rgba(15, 92, 92, 0.08),
-        inset 0 0 0 1px rgba(15, 92, 92, 0.10);
-    border: 1px solid rgba(15, 92, 92, 0.08);
-}
-
-
-/* ============================================================
-   КАРТОЧКИ (article / .card)
-   ============================================================ */
-article,
-.card {
-    background-color: var(--bg-card);
-    border: 2px solid var(--border);
-    padding: 20px;
-    margin-bottom: 15px;
-    box-shadow: var(--shadow-card);
-    animation: fadeIn 0.3s ease;
-}
-
-article > header,
-.card-header {
-    background-color: var(--bg-page);
-    color: var(--fg-bright);
-    font-weight: bold;
-    letter-spacing: 2px;
-    padding: 10px 15px;
-    margin: -20px -20px 15px -20px;
-    border-bottom: 2px solid var(--border);
-    text-shadow: var(--shadow-text-glow);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-article > header h1,
-article > header h2,
-article > header h3 { margin: 0; }
-
-article > footer,
-.card-footer {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid var(--border-dim);
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-
-/* ============================================================
-   КНОПКИ
-   ============================================================ */
-.btn {
-    display: inline-block;
-    background-color: var(--bg-info);
-    color: var(--fg-primary);
-    border: 2px solid var(--border);
-    padding: 8px 16px;
-    font-family: "Consolas", "Courier New", monospace;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-shadow: var(--shadow-text-glow);
-    text-decoration: none;
-    margin: 0;
-    width: auto;
-    line-height: 1.4;
-}
-.btn:hover {
-    background-color: var(--bg-active);
-    border-color: var(--accent-bright);
-    box-shadow: var(--shadow-glow);
-    color: var(--accent-bright);
-}
-.btn:active { background-color: var(--bg-active); }
-
-.btn-sm {
-    padding: 5px 10px;
-    font-size: 10px;
-}
-
-.btn-success {
-    background-color: var(--bg-success);
-    border-color: var(--success);
-    color: var(--success);
-}
-.btn-success:hover {
-    border-color: var(--success-bright);
-    color: var(--success-bright);
-    box-shadow: var(--shadow-glow);
-}
-
-.btn-danger {
-    background-color: var(--bg-danger);
-    border-color: var(--danger);
-    color: var(--danger);
-}
-.btn-danger:hover {
-    border-color: var(--danger-bright);
-    color: var(--danger-bright);
-    box-shadow: var(--shadow-glow);
-}
-
-.btn-secondary {
-    background-color: var(--bg-page);
-    border-color: var(--fg-dim);
-    color: var(--fg-dim);
-    text-shadow: none;
-}
-.btn-secondary:hover {
-    background-color: var(--bg-hover);
-    border-color: var(--accent);
-    color: var(--accent);
-    text-shadow: var(--shadow-text-glow);
-}
-
-
-/* ============================================================
-   БЕЙДЖИ
-   ============================================================ */
-.badge,
-.badge-success,
-.badge-warning,
-.badge-danger,
-.badge-info,
-.badge-secondary {
-    display: inline-block;
-    padding: 3px 8px;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border: 1px solid var(--border);
-    background-color: var(--bg-info);
-    color: var(--fg-primary);
-    text-shadow: var(--shadow-text-glow);
-}
-
-.badge-success {
-    border-color: var(--success);
-    color: var(--success);
-    background-color: var(--bg-success);
-}
-.badge-warning {
-    border-color: var(--warning);
-    color: var(--warning);
-    background-color: var(--bg-warning);
-}
-.badge-danger {
-    border-color: var(--danger);
-    color: var(--danger);
-    background-color: var(--bg-danger);
-}
-.badge-info {
-    border-color: var(--info);
-    color: var(--info);
-    background-color: var(--bg-info);
-}
-.badge-secondary {
-    border-color: var(--fg-dim);
-    color: var(--fg-dim);
-    background-color: var(--bg-page);
-    text-shadow: none;
-}
-
-
-/* ============================================================
-   СКРОЛЛБАР
-   ============================================================ */
+/* Скроллбар */
 ::-webkit-scrollbar { width: 12px; height: 12px; }
 ::-webkit-scrollbar-track {
     background-color: var(--scrollbar-track);
@@ -544,184 +179,8 @@ article > footer,
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--scrollbar-thumb-hover);
-    box-shadow: var(--shadow-glow);
 }
-
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-}
-
-
-/* ============================================================
-   УТИЛИТЫ
-   ============================================================ */
-.text-center { text-align: center; }
-.text-right  { text-align: right; }
-.text-muted  { color: var(--fg-dim) !important; }
-.mb-3 { margin-bottom: 15px; }
-.mt-3 { margin-top: 15px; }
-
-
-/* ============================================================
-   АНИМАЦИИ
-   ============================================================ */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-
-/* ============================================================
-   ★ МОБИЛЬНАЯ АДАПТАЦИЯ (≤768px) ★
-   ============================================================ */
-@media (max-width: 768px) {
-
-    html { font-size: 16px; }
-
-    body, p, li, label, div, span, a {
-        font-size: 14px;
-    }
-
-    small,
-    .text-muted,
-    .badge,
-    .badge-success,
-    .badge-warning,
-    .badge-danger,
-    .badge-info,
-    .badge-secondary {
-        font-size: 12px !important;
-    }
-
-    h1 { font-size: 1.5rem; }
-    h2 { font-size: 1.25rem; }
-    h3 { font-size: 1.1rem; }
-
-    /* Кнопки — минимум 44×44 */
-    .btn,
-    .btn-sm,
-    a.btn,
-    button {
-        min-height: 44px !important;
-        min-width: 44px;
-        padding: 12px 16px;
-        font-size: 14px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-    }
-
-    /* Тач-фидбек */
-    .btn:active,
-    button:active,
-    a.btn:active {
-        transform: scale(0.97);
-        transition: transform 0.1s;
-    }
-
-    /* Layout */
-    .layout { display: block; }
-    .content { padding: 12px; }
-    .page {
-        padding: 15px;
-        background-attachment: scroll;
-        min-height: calc(100vh - 64px);
-    }
-
-    /* Карточки */
-    .card {
-        max-width: calc(100vw - 24px);
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* Topbar */
-    .topbar { padding: 10px 15px; }
-    .topbar-brand { font-size: 0.9rem; }
-    .topbar-user { display: none; }
-
-    /* Сайдбар — выезжающий + overlay */
-    .sidebar {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: min(280px, 85vw);
-        transform: translateX(-100%);
-        transition: transform 0.2s ease;
-        z-index: 1000;
-        background-color: var(--bg-sidebar);
-        overflow-y: auto;
-    }
-
-    .sidebar.open {
-        transform: translateX(0);
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
-    }
-
-    body:has(.sidebar.open)::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-        animation: fadeIn 0.2s ease;
-    }
-
-    .sidebar nav a {
-        font-size: 13px !important;
-        padding: 10px 12px;
-    }
-
-    .sidebar-footer { font-size: 12px; }
-
-    html { scroll-behavior: smooth; }
-
-    .sidebar nav a:active {
-        background-color: var(--bg-active);
-    }
-}
-
-
-/* ============================================================
-   ★ ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (≤480px) ★
-   ============================================================ */
-@media (max-width: 480px) {
-    body,
-    p, li, td, th, label, div, span, a {
-        font-size: 13px;
-    }
-
-    .topbar-brand { display: none; }
-    h1 { font-size: 1.25rem; }
-    h2 { font-size: 1.1rem; }
-
-    .content { padding: 8px; }
-    .page { padding: 10px; min-height: calc(100vh - 56px); }
-}
-
-
-/* ============================================================
-   ГАРАНТИРОВАННЫЙ ФОН СЕТКИ (48px)
-   ============================================================ */
-html .page,
-html[data-theme="dark"] .page,
-:root .page {
-    background-image:
-        linear-gradient(rgba(0, 255, 255, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.06) 1px, transparent 1px) !important;
-    background-size: 48px 48px !important;
-    background-attachment: local !important;
-}
-
-html[data-theme="light"] .page {
-    background-image:
-        linear-gradient(rgba(31, 45, 46, 0.22) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(31, 45, 46, 0.22) 1px, transparent 1px) !important;
-    background-size: 48px 48px !important;
-    background-color: #e3e8ea !important;
-    background-attachment: local !important;
 }
